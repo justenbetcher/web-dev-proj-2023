@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Assignment</title>
+</head>
+<body>
+    <!--Style block-->
+    <style>
+        body{
+            background-color: rgb(220, 250, 230);
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
+        .nav{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin-bottom: 0;
+            background-color: rgb(39, 156, 64);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            overflow: none;
+        }
+        h2{
+            width: 100%;
+            padding: 13px 10px;
+            margin: 0;
+            font-size: large;
+            
+        }
+        .drop-list{
+            display: none;
+        }
+        .drop-list > a{
+            padding: 3px 10px; /* padding: top/bottom left/right */
+        }
+        .dropdown:hover .drop-list{
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            background-color: lightblue;
+            width: 100%;
+        }
+        .dropdown:hover{
+            position: relative;
+            background-color: lightblue;
+        }
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            padding: 50px 20px;
+            margin: 0;
+            justify-content: center;
+            align-items: center;
+        }
+        .card{
+            background-color: white;
+            width: 80%;
+            margin-top: 20px;
+        }
+        .card > p{
+            margin-top: 0;
+            margin-left: 10px;
+        }
+        .card-1{
+            border-left: solid;
+            border-color: green;
+            border-width: 5px;
+        }
+        .card-2{
+            border-left: solid;
+            border-color: yellow;
+            border-width: 5px;
+        }
+    </style>
+
+    <!--Navigation bar-->
+    <div class="nav">
+        <!--Dropdown 1-->
+        <div class="dropdown drop-1">
+            <h2>File</h2>
+            <!--Dropdown items-->
+            <div class="drop-list drop-list-1">
+                <a href="#" class="list-item">New</a>
+                <a href="#" class="list-item">Open</a>
+                <a href="#" class="list-item">Save</a>
+                <a href="#" class="list-item">Print</a>
+                <a href="#" class="list-item">Close</a>
+            </div>
+        </div>
+        <!--Dropdown 2-->
+        <div class="dropdown drop-2">
+            <h2>Edit</h2>
+            <!--Dropdown items-->
+            <div class="drop-list drop-list-2">
+                <a href="#" class="list-item">Undo</a>
+                <a href="#" class="list-item">Redo</a>
+                <a href="#" class="list-item">Cut</a>
+                <a href="#" class="list-item">Copy</a>
+                <a href="#" class="list-item">Paste</a>
+                <a href="#" class="list-item">Select All</a>
+            </div>
+        </div>
+        <!--Dropdown 3-->
+        <div class="dropdown drop-3">
+            <h2>View</h2>
+            <!--Dropdown items-->
+            <div class="drop-list drop-list-2">
+                <a href="#" class="list-item">Zoom In</a>
+                <a href="#" class="list-item">Zoom Out</a>
+                <a href="#" class="list-item">Actual Size</a>
+                <a href="#" class="list-item">Fit Page</a>
+                <a href="#" class="list-item">Fit Width</a>
+                <a href="#" class="list-item">Fit Heigth</a>
+                <a href="#" class="list-item">Rotate Left</a>
+                <a href="#" class="list-item">Rotate Right</a>
+                <a href="#" class="list-item">Full Screen</a>
+
+
+            </div>
+        </div>
+    </div>
+    
+    <!--Container for elemnts in body of page-->
+    <div class="container">
+        <!--Card 1-->
+        <div class="card card-1">
+            <h2>Instructions</h2>
+            <p>Recreate this page using <strong><i>only CSS</i></strong>. Do yourself a favor and 1) 
+                Do not view the source. Figure it out yourself. 2) 
+                Do not search for the solution. Learn CSS until you know enough to do this.</p>
+        </div>
+        <!--Card 2-->
+        <div class="card card-2">
+            <h2>Extra Credit</h2>
+            <p>Notice how the Edit menu (besides for not being bold) 
+                reacts to clicks. If you click the edit menu, 
+                it remains open until you click somewhere else. 
+                (This you might need to search for)</p>
+        </div>
+    </div>
+
+
+</body>
+</html>
