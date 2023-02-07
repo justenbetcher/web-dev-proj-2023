@@ -18,17 +18,40 @@
             margin: 0;
         }
         .image{
-            z-index: -1;
-            top: 0;
-            left: 0;
+          z-index: -1;
+          position: absolute;
+          top: 0;
+          left: 0;
         }
+        .is-transparent, .navbar-dropdown{
+          background-color: rgba(168, 168, 168, 0.5)
+        }
+        .navbar-item{
+          color: white;
+        }
+        .navbar-link{
+          color: white;
+        }
+        .navbar-link:hover{
+          color: rgb(92, 210, 249);
+        }
+        .navbar.is-transparent .navbar-dropdown a.navbar-item:hover{
+          color: rgb(0, 132, 255);
+        }
+
+        
+        .navbar-item > h2{
+          font-size: xx-large;
+          font-weight: bolder;
+        }
+        
+        
     </style>
 
 
 <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="#">
-        <!--<img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">-->
         <h2>Git Fit</h2>
       </a>
   
@@ -86,8 +109,11 @@
       </div>
     </div>
   </nav>
-  <figure class="img-header image">
+  <figure class="img-header image is-overlay">
     <img src="https://media.istockphoto.com/id/618982838/photo/lace-up-for-the-workout-of-your-life.jpg?s=1024x1024&w=is&k=20&c=QAcgDSeoZERrIBhnJ81PbHe0dlB8NyyahDfCrWsWKcY=">
-</figure>
+  </figure>
+  <h1>Welcom to your fitness journey</h1>
+
+ 
 </body>
 </html>
