@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <!--<link rel="stylesheet" href="https://kit.fontawesome.com/629c2bccf5.css" crossorigin="anonymous">-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
-    <title>Git Fit home page</title>
+    <title>Git Fit</title>
 </head>
 <body>
     <style>
@@ -16,12 +16,6 @@
         }
         body{
             margin: 0;
-        }
-        .image{
-          z-index: -1;
-          position: absolute;
-          top: 0;
-          left: 0;
         }
         .is-transparent, .navbar-dropdown{
           background-color: rgba(168, 168, 168, 0.5)
@@ -35,8 +29,8 @@
         .navbar-link:hover{
           color: rgb(92, 210, 249);
         }
-        .navbar.is-transparent .navbar-dropdown a.navbar-item:hover{
-          color: rgb(72, 95, 199);
+        .navbar-dropdown a.navbar-item:hover{
+          color: rgb(72, 95, 199) !important;
         }
         .navbar-item > h2{
           font-size: xx-large;
@@ -60,12 +54,26 @@
           color: white;
           font-size: 3rem;
         }
-        .pic-container strong{
+        .pic-container >h1 strong{
           color:rgb(92, 210, 249);
         }
-        .is-primary{
-          background-color: rgb(92, 210, 249) !important;
+        .button.is-primary{
+          background-color: rgb(92, 210, 249);
         }
+        .pic-button{
+          margin-top: 10px;
+          height: 3em;
+          width: 6em;
+          font-size: 2em;
+        }
+        .button.is-primary:hover{
+          background-color: rgb(78, 182, 216);
+        }
+        .container{
+          position: relative;
+          top: 500px;
+        }
+        
     </style>
 
 
@@ -132,6 +140,89 @@
   
   <div class="pic-container">
     <h1><strong>GIT</strong> started with your <strong>FIT</strong>ness journey</h1>
+    <div class="buttons">
+      <a class="pic-button button is-primary">
+        <strong>Sign up</strong>
+      </a>
+    </div>
   </div>
+
+  <!--container for the rest of the webpage after the picture-->
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <div class="card">
+          <div class="card-content">
+            <p class="title">
+              “There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.”
+            </p>
+            <p class="subtitle">
+              Jeff Atwood
+            </p>
+          </div>
+          <footer class="card-footer">
+            <p class="card-footer-item">
+              <span>
+                View on <a href="https://twitter.com/codinghorror/status/506010907021828096">Twitter</a>
+              </span>
+            </p>
+            <p class="card-footer-item">
+              <span>
+                Share on <a href="#">Facebook</a>
+              </span>
+            </p>
+          </footer>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <div class="card-content">
+            <p class="title">
+              “There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.”
+            </p>
+            <p class="subtitle">
+              Jeff Atwood
+            </p>
+          </div>
+          <footer class="card-footer">
+            <p class="card-footer-item">
+              <span>
+                View on <a href="https://twitter.com/codinghorror/status/506010907021828096">Twitter</a>
+              </span>
+            </p>
+            <p class="card-footer-item">
+              <span>
+                Share on <a href="#">Facebook</a>
+              </span>
+            </p>
+          </footer>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <div class="card-content">
+            <p class="title">
+              “There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.”
+            </p>
+            <p class="subtitle">
+              Jeff Atwood
+            </p>
+          </div>
+          <footer class="card-footer">
+            <p class="card-footer-item">
+              <span>
+                View on <a href="https://twitter.com/codinghorror/status/506010907021828096">Twitter</a>
+              </span>
+            </p>
+            <p class="card-footer-item">
+              <span>
+                Share on <a href="#">Facebook</a>
+              </span>
+            </p>
+          </footer>
+        </div>
+      </div>
+    </div>
+
 </body>
 </html>
