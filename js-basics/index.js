@@ -43,3 +43,5 @@ function timeTwo(number){
 }
 
 console.log(timeTwo(5));
+
+document.getElementById('test').innerHTML = 'HELLO this was added with java script';
