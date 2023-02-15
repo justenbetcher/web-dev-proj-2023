@@ -1,8 +1,8 @@
 //output somethting to the console on your browser
-console.lot('Hello');
+console.log('Hello');
 
 //output somethingg to the webpage using an id
-document.getElementById('test') = 'Hello';
+document.getElementById('test').innerHTML = 'Hello';
 
 //creating a variable
 let x = 5;
@@ -42,13 +42,16 @@ class Company {
 
 //a quicker way of making a class with properties, or attributes.
 class car {
-    constructore(size, weight, color, type){
+    constructor (size, weight, color, type){
         this.size = size;
         this.weight = weight;
         this.color = color;
         this.type = type;
     }
 }
+
+const sedan = new car(50, 1200, 'blue', 'sedan');
+console.log(sedan);
 
 
 
