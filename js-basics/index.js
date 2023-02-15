@@ -1,47 +1,54 @@
-console.log('hello world');
-let name = 'justen';
-console.log(name);
+//output somethting to the console on your browser
+console.lot('Hello');
 
-//this is a constant variable that cannot be changed
-const NAME = 'justen betcher';
+//output somethingg to the webpage using an id
+document.getElementById('test') = 'Hello';
 
-console.log(NAME);
-console.log(typeof name);
-console.log('awesome');
+//creating a variable
+let x = 5;
 
-//this is an object in js
-let tree = {
-    //object properties
-    treeType: 'Oak',
-    age: 140,
-    height: 350,
-};
-
-// access by dot notaion
-tree.treeType = 'maple';
-
-// bracket notation
-tree['age'] = 100;
-
-// bracket notation being changed at runtime
-let selectProperty = 'height';
-tree[selectProperty] = 200;
-
-console.log(tree.height);
-console.log(tree.age);
-console.log(tree.treeType);
-console.log(tree);
-
-// this is an array in js, in js an array is an object as well
-let shoppingCart = ['salad', 'oranges', 'dressing', 4];
-
-console.log(shoppingCart[1]);
-
-// this is a function in js
-function timeTwo(number){
-    return number * 2;
+//creating an object
+const Cup = {
+    //properties
+    material: 'glass',
+    liquid: 'wine',
+    price: 20
 }
 
-console.log(timeTwo(5));
+//creating an object using a constructor so you can create many reference variables to the same object
+//doing it this way also automatically makes Person a class after all if you can make referance variables,
+//which are objects, that means there is a cless because an object is just an instance of a class
+function Person(firstName, lastName, job, id){
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.job = job;
+    this.id = id;
+}
 
-document.getElementById('test').innerHTML = 'HELLO this was added with java script';
+//another way of creating a class
+class Company {
+    //class attributes, or properties
+    companyName;
+    grossDomesticProduct;
+    quantityOfWorkers;
+
+    //constructor
+    constructor (name, product, workers){
+        companyName = name;
+        grossDomesticProduct = product;
+        quantityOfWorkers = workers;
+    }
+}
+
+//a quicker way of making a class with properties, or attributes.
+class car {
+    constructore(size, weight, color, type){
+        this.size = size;
+        this.weight = weight;
+        this.color = color;
+        this.type = type;
+    }
+}
+
+
+
