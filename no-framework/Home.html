@@ -49,6 +49,7 @@
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          text-align: center;
         }
         .pic-container > h1{
           color: white;
@@ -72,6 +73,32 @@
         .container{
           position: relative;
           top: 500px;
+          max-width: 100%;
+          margin: 0;
+        }
+        @media screen and (min-width: 1024px){
+          .container { 
+              max-width: 100%;
+          }
+        }
+        @media screen and (min-width: 1024px){
+          .container { 
+              max-width: 100%;
+          }
+        }
+        @media screen and (min-width: 1408px){
+          .container:not(.is-max-desktop):not(.is-max-widescreen) {
+              max-width: 100%;
+          }
+        }
+        @media screen and (min-width: 1216px){
+          .container:not(.is-max-desktop) {
+              max-width: 100%;
+          }
+        } 
+        .columns{
+          margin-right: 2%;
+          margin-left: 2%;
         }
         
     </style>
@@ -223,6 +250,18 @@
         </div>
       </div>
     </div>
+
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+          </p>
+        </div>
+      </footer>
+
+  </div>
 
 </body>
 </html>
