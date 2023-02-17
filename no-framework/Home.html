@@ -5,9 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <!--<link rel="stylesheet" href="https://kit.fontawesome.com/629c2bccf5.css" crossorigin="anonymous">-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
-    <title>Git Fit</title>
+    <title>Home</title>
 </head>
 <body>
     <style>
@@ -36,6 +35,9 @@
           font-size: xx-large;
           font-weight: bolder;
         }
+        .button.is-light{
+          margin-right: 10px;
+        }
         .pic-container{
           background-image: url("https://media.istockphoto.com/id/618982838/photo/lace-up-for-the-workout-of-your-life.jpg?s=1024x1024&w=is&k=20&c=QAcgDSeoZERrIBhnJ81PbHe0dlB8NyyahDfCrWsWKcY=");
           height: 500px;
@@ -55,11 +57,11 @@
           color: white;
           font-size: 3rem;
         }
-        .pic-container >h1 strong{
-          color:rgb(92, 210, 249);
+        .has-text-primary{
+          color:rgb(92, 210, 249) !important;
         }
-        .button.is-primary{
-          background-color: rgb(92, 210, 249);
+        .is-primary{
+          background-color: rgb(92, 210, 249) !important;
         }
         .pic-button{
           margin-top: 10px;
@@ -67,8 +69,8 @@
           width: 6em;
           font-size: 2em;
         }
-        .button.is-primary:hover{
-          background-color: rgb(78, 182, 216);
+        .is-primary:hover{
+          background-color: rgb(78, 182, 216) !important;
         }
         .container{
           position: relative;
@@ -153,9 +155,6 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-primary">
-              <strong>Sign up</strong>
-            </a>
             <a class="button is-light">
               Log in
             </a>
@@ -166,7 +165,7 @@
   </nav>
   
   <div class="pic-container">
-    <h1><strong>GIT</strong> started with your <strong>FIT</strong>ness journey</h1>
+    <h1><strong class="has-text-primary">GIT</strong> started with your <strong class="has-text-primary">FIT</strong>ness journey</h1>
     <div class="buttons">
       <a class="pic-button button is-primary">
         <strong>Sign up</strong>
@@ -260,8 +259,6 @@
           </p>
         </div>
       </footer>
-
   </div>
-
 </body>
 </html>
