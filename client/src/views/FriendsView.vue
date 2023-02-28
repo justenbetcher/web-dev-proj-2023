@@ -1,10 +1,10 @@
 <script setup lang="ts">
-    import {RouterLink, RouterView} from 'vue-router';
-</script> 
+</script>
 
 <template>
-    
+    <h1>Friends View</h1>
 </template>
+
 
 
 <style scoped>
