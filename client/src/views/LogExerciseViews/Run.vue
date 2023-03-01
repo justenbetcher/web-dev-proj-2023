@@ -12,6 +12,6 @@ import LogExerciseMenu from '../../components/LogExerciseMenu.vue';
 
 
 
-<style lang="scss" scoped>
+<style scoped>
 
 </style>

@@ -13,29 +13,25 @@
                 <!--<h1>RUNNING</h1>-->
                 <RouterLink to="/exercise-run" class="box">RUNNING</RouterLink>
             
-            <div id="swimming" class="box">
-                <h1>SWIMMING</h1>
-            </div>
+                <RouterLink to="/exercise-swim" class="box">SWIMMING</RouterLink>
         </div>
 
         <!--second column -->
         <div class="column">
-            <div id="walking" class="box">
-                <h1>WALKING</h1>
-            </div>
-            <div id="weight-training" class="box">
-                <h1>WEIGHT TRAINING</h1>
-            </div>
+
+            <RouterLink to="/exercise-walk" class="box">WALKING</RouterLink>
+
+            <RouterLink to="/exercise-weightTraining" class="box">WEIGHT TRAINING</RouterLink>
+
         </div>
 
         <!-- third column -->
         <div class="column">
-            <div id="hiit" class="box">
-                <h1>HIGH INTENSITY INTERVAL TRAINING</h1>
-            </div>
-            <div id="calistenics" class="box">
-                <h1>CALISTENICS</h1>
-            </div>
+
+            <RouterLink to="/exercise-hiit" class="box">Hight Intensity Interval Training</RouterLink>
+
+            <RouterLink to="/exercise-calistenics" class="box">CALISTENICS</RouterLink>
+
         </div>
     </div>
 </div>
