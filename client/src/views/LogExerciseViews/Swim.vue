@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import {RouterLink, RouterView} from 'vue-router'
-import LogExerciseMenu from '../../components/LogExerciseMenu.vue';
+import LogExerciseView from '../LogExerciseView.vue';
 </script>
 
 <template>
-    <LogExerciseMenu />
+    <LogExerciseView />
     <div>
         <h1>Swimming</h1>
     </div>
