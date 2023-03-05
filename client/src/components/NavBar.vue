@@ -1,5 +1,8 @@
 <script setup lang="ts">
     import {RouterLink, RouterView} from 'vue-router';
+    import { useSession, login } from '../model/session.ts'
+
+    const session = useSession()
 </script>
 
 <template>
@@ -37,7 +40,7 @@
             <div class="navbar-item">
                 <div class="field is-grouped">
                     <p class="control">
-                        <a class="button is-primary" href="#">
+                        <a class="button is-primary" href="#" @click="session.user = null">
                             <span class="icon">
                                 <i class="fas fa-right-from-bracket"></i>
                             </span>

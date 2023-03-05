@@ -1,19 +1,26 @@
 <script setup lang="ts">
     import { RouterLink, RouterView } from 'vue-router'
-    import NavBar from './components/NavBar.vue';
+    import NavBar from './components/NavBar.vue'
+    import LogInView from './views/LogInView.vue'
+    import { useSession, login } from './model/session.ts'
 
-    let obj:any = {
-        
-    }
+    const session = useSession()
 </script>
 
 <template>
-    <NavBar />
+    
+    <div v-if="session.user">
+        <NavBar />
 
-    <div class="container">
+        <div class="container">
 
-        <RouterView />
+            <RouterView />
 
+        </div>
+    </div>
+    
+    <div v-else>
+        <LogInView />
     </div>
 
 </template>
