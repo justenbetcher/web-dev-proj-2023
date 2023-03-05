@@ -2,3 +2,6 @@
 @import 'bulma/css/bulma.css';
 @import '@fortawesome/fontawesome-free/css/all.css';
 
+.footer{
+    margin-top: 15px;
+}

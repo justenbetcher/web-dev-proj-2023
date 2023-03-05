@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import { RouterLink, RouterView } from 'vue-router'
     import NavBar from './components/NavBar.vue'
+    import Footer from './components/Footer.vue'
     import LogInView from './views/LogInView.vue'
     import { useSession, login } from './model/session.ts'
 
@@ -8,7 +9,7 @@
 </script>
 
 <template>
-    
+
     <div v-if="session.user">
         <NavBar />
 
@@ -17,6 +18,7 @@
             <RouterView />
 
         </div>
+        <Footer />
     </div>
     
     <div v-else>
