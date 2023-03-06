@@ -31,7 +31,32 @@ import LogExerciseView from '../LogExerciseView.vue';
         </div>
         <p class="field">Stroke</p>
         <div class="field">
-            <input class="input" type="text" placeholder="Stroke">
+            <div class="dropdown is-active">
+                <div class="dropdown-trigger">
+                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <span>Stroke</span>
+                    <span class="icon is-small">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                    </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                    <div class="dropdown-content">
+                        <a href="#" class="dropdown-item">
+                            Free Style
+                        </a>
+                        <a class="dropdown-item">
+                            Breast Stroke
+                        </a>
+                        <a href="#" class="dropdown-item is-active">
+                            Butterfly
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            Back Stroke
+                        </a>
+                    </div>
+                </div>
+                </div>
         </div>
     </div>
 </template>

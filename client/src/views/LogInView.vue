@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
 import { login } from '../model/session.ts'
-import '../assets/LogIn.css'
-
+import HomeView from './HomeView.vue'
 </script>
 
 <template>
@@ -32,9 +32,9 @@ import '../assets/LogIn.css'
             </div>
             <div class="field">
                 <p class="control">
-                <button class="button is-success" @click="login">
-                    Login
-                </button>
+                    <RouterLink to="/" class="button is-success" @click="login">
+                        Login
+                    </RouterLink>
                 </p>
             </div>
         </div>
