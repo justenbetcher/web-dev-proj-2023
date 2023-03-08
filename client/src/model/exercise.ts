@@ -17,8 +17,8 @@ interface RunWalk {
 }
 
 interface Swim {
-    laps: number;
     poolSize: boolean;
+    laps: number;
     time: number;
     stroke: string;
 }
@@ -59,11 +59,11 @@ export function setWalk(unitPassed: boolean, distancePassed: number, timePassed:
     }
 }
 
-export function setSwim(lapsPassed: number, timePassed: number, poolSizePassed: boolean, strokePassed: string) {
+export function setSwim(poolSizePassed: boolean,lapsPassed: number, timePassed: number, strokePassed: string) {
     Exercises.value.swim = {
+        poolSize: poolSizePassed,
         laps: lapsPassed,
         time: timePassed,
-        poolSize: poolSizePassed,
         stroke: strokePassed,
     }
 }

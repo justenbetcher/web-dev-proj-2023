@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import {RouterLink, RouterView} from 'vue-router'
 import LogExerciseView from '../LogExerciseView.vue';
+import { useExercises, setSwim } from '../../model/exercise.ts'
+
+const exercise = useExercises();
+let size = true
+let laps = 50
+let time = 120
+let stroke = 'butterfly'
+setSwim(size, laps, time, stroke)
 </script>
 
 <template>
@@ -59,6 +67,16 @@ import LogExerciseView from '../LogExerciseView.vue';
                 </div>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div><h1>Test {{ exercise.swim.laps }}</h1></div>
 </template>
 
 
