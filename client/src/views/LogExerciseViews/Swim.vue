@@ -4,11 +4,8 @@ import LogExerciseView from '../LogExerciseView.vue';
 import { useExercises, setSwim } from '../../model/exercise.ts'
 
 const exercise = useExercises();
-let size = true
-let laps = 50
-let time = 120
-let stroke = 'butterfly'
-setSwim(size, laps, time, stroke)
+setSwim(null,null,null,null)
+
 </script>
 
 <template>
@@ -17,28 +14,38 @@ setSwim(size, laps, time, stroke)
     <div class="box">
         <h1 class="title">Log Your Swim!</h1>
 
-        <p class="field">Laps and Pool Size</p>
+        <!-- PoolSize input field -->
+        <p class="field">Pool Size</p>
         <div class="field">
             <div class="control">
                 <label class="radio">
-                    <input type="radio" name="answer">
+                    <input type="radio" name="answer" value="25" v-model="exercise.swim.poolSize">
                         25m
                 </label>
                 <label class="radio">
-                    <input type="radio" name="answer">
+                    <input type="radio" name="answer" value="50" v-model="exercise.swim.poolSize">
                         50m
                 </label>
             </div>
         </div>
+
+        <!-- Laps input feild -->
+        <p class="field">Laps</p>
         <div class="field">
-            <input class="input" type="text" placeholder="Laps">
+            <input class="input" type="text" placeholder="Laps" v-model="exercise.swim.laps">
         </div>
+
+        <!-- Time input field-->
         <p class="field">Time</p>
         <div class="field">
-            <input class="input" type="text" placeholder="Time">
+            <input class="input" type="text" placeholder="Time" v-model="exercise.swim.time">
         </div>
+
+        <!-- Stroke input Feild -->
         <p class="field">Stroke</p>
         <div class="field">
+            <input type="text" class="input" placeholder="Stroke" v-model="exercise.swim.stroke">
+            <!--
             <div class="dropdown is-active">
                 <div class="dropdown-trigger">
                     <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
@@ -64,8 +71,10 @@ setSwim(size, laps, time, stroke)
                         </a>
                     </div>
                 </div>
-                </div>
+            </div>
+            -->
         </div>
+
     </div>
     <br>
     <br>
@@ -76,7 +85,9 @@ setSwim(size, laps, time, stroke)
     <br>
     <br>
     <br>
-    <div><h1>Test {{ exercise.swim.laps }}</h1></div>
+    
+    <div><h1>Pool Size: {{ exercise.swim.poolSize }}, Laps: {{ exercise.swim.laps }},
+        Time: {{ exercise.swim.time }}, Stroke: {{ exercise.swim.stroke }}</h1></div>
 </template>
 
 

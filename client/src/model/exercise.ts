@@ -10,14 +10,14 @@ const Exercises = ref({
     hiit: null as HIIT | null
 })
 interface RunWalk {
-    unit: boolean;
+    unit: number;
     distance: number;
     time: number;
     elevation?: number;
 }
 
 interface Swim {
-    poolSize: boolean;
+    poolSize: number;
     laps: number;
     time: number;
     stroke: string;
