@@ -9,26 +9,26 @@ const Exercises = ref({
     weightTraining: null as CalistenicsWeight | null,
     hiit: null as HIIT | null
 })
-interface RunWalk {
+export interface RunWalk {
     unit: number;
     distance: number;
     time: number;
     elevation?: number;
 }
 
-interface Swim {
+export interface Swim {
     poolSize: number;
     laps: number;
     time: number;
     stroke: string;
 }
 
-interface CalistenicsWeight {
+export interface CalistenicsWeight {
     exercise: [];
     time: number;
 }
 
-interface HIIT {
+export interface HIIT {
     exercise: [];
     totalTime: number;
     restTime: number;
@@ -41,7 +41,7 @@ export function useExercises() {
     return Exercises;
 }
 
-export function setRun(unitPassed: boolean, distancePassed: number, timePassed: number, elevationPassed: number){
+export function setRun(unitPassed: number, distancePassed: number, timePassed: number, elevationPassed: number){
     Exercises.value.run = {
         unit: unitPassed,
         distance: distancePassed,
@@ -50,7 +50,7 @@ export function setRun(unitPassed: boolean, distancePassed: number, timePassed: 
     }
 }
 
-export function setWalk(unitPassed: boolean, distancePassed: number, timePassed: number, elevationPassed: number){
+export function setWalk(unitPassed: number, distancePassed: number, timePassed: number, elevationPassed: number){
     Exercises.value.walk = {
         unit: unitPassed,
         distance: distancePassed,
@@ -59,7 +59,7 @@ export function setWalk(unitPassed: boolean, distancePassed: number, timePassed:
     }
 }
 
-export function setSwim(poolSizePassed: boolean,lapsPassed: number, timePassed: number, strokePassed: string) {
+export function setSwim(poolSizePassed: number,lapsPassed: number, timePassed: number, strokePassed: string) {
     Exercises.value.swim = {
         poolSize: poolSizePassed,
         laps: lapsPassed,
