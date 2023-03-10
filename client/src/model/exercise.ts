@@ -9,30 +9,39 @@ const Exercises = ref({
     weightTraining: null as CalistenicsWeight | null,
     hiit: null as HIIT | null
 })
-export interface RunWalk {
+interface RunWalk {
     unit: number;
     distance: number;
     time: number;
     elevation?: number;
 }
 
-export interface Swim {
+interface Swim {
     poolSize: number;
     laps: number;
     time: number;
     stroke: string;
 }
 
-export interface CalistenicsWeight {
+interface CalistenicsWeight {
     exercise: [];
     time: number;
 }
 
-export interface HIIT {
+interface HIIT {
     exercise: [];
     totalTime: number;
     restTime: number;
     workTime: number;
+}
+
+export interface Exercise {
+    run: RunWalk;
+    walk: RunWalk;
+    swim: Swim;
+    calistenics: CalistenicsWeight;
+    weightLifting: CalistenicsWeight;
+    hiit: HIIT;
 }
 
 

@@ -1,13 +1,25 @@
 import { ref } from 'vue';
-import type { User } from './session';
-import type { Swim, RunWalk } from './exercise'
+import { useSession } from './session';
+import type { Exercise } from './exercise';
 
+const exerciseFeed = ref([] as post[]);
+const session = useSession();
 
-const exercisePost = ref([] as post[])
+export function useFeed() {
+    return exerciseFeed;
+}
+
 
 interface post {
-    name: User,
-    swim?: Swim,
-    run?: RunWalk,
-    walk?: RunWalk,
+    name: string;
+    exercise: Exercise;
+    date: Date;
+}
+
+export function makePost(exercisePassed: Exercise){
+    exerciseFeed.value.push ({
+        name: session.user.name,
+        exercise: exercisePassed,
+        date: new Date(),
+    });
 }
