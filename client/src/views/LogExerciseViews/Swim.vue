@@ -3,8 +3,17 @@ import LogExerciseView from '../LogExerciseView.vue';
 import { useExercises, setSwim } from '../../model/exercise';
 import { makePost } from '@/model/post';
 
-    const exercise = useExercises();
-    setSwim(0,0,0,'');
+    const workout = useExercises();
+
+    workout.value.exercise = {
+        name: 'Swim',
+        unit: '',
+        distance: 0,
+        time: 0,
+        poolSize: 0,
+        laps: 0,
+        stroke: '',
+    }
 
 </script>
 
@@ -18,11 +27,11 @@ import { makePost } from '@/model/post';
         <div class="field">
             <div class="control">
                 <label class="radio">
-                    <input type="radio" name="answer" value="25" v-model.number="exercise.swim.poolSize">
+                    <input type="radio" name="answer" value="25" v-model.number="workout.exercise.poolSize">
                         25m
                 </label>
                 <label class="radio">
-                    <input type="radio" name="answer" value="50" v-model.number="exercise.swim.poolSize">
+                    <input type="radio" name="answer" value="50" v-model.number="workout.exercise.poolSize">
                         50m
                 </label>
             </div>
@@ -31,20 +40,20 @@ import { makePost } from '@/model/post';
         <!-- Laps input feild -->
         <p class="field">Laps</p>
         <div class="field">
-            <input class="input" type="text" placeholder="Laps" v-model.number="exercise.swim.laps">
+            <input class="input" type="text" placeholder="Laps" v-model.number="workout.exercise.laps">
         </div>
 
         <!-- Time input field-->
         <p class="field">Time <small>(in minutes)</small></p>
         <div class="field">
-            <input class="input" type="text" placeholder="Time" v-model.number="exercise.swim.time">
+            <input class="input" type="text" placeholder="Time" v-model.number="workout.exercise.time">
         </div>
 
         <!-- Stroke input Feild -->
         <p class="field">Stroke</p>
         <div class="field">
             <div class="select">            
-                <select v-model.string="exercise.swim.stroke">
+                <select v-model.string="workout.exercise.stroke">
                     <option disabled value="">choose stroke</option>
                     <option value="Butterfly">Butterfly</option>
                     <option value="Freestyle">FreeStyle</option>
@@ -55,7 +64,7 @@ import { makePost } from '@/model/post';
         </div>
 
         <div class="field">
-            <button class="button is-success submit" @click="makePost(exercise.swim)">
+            <button class="button is-success submit" @click="makePost(workout.exercise)">
                 <span>Post Your Workout</span>
             </button>
         </div>
@@ -64,8 +73,8 @@ import { makePost } from '@/model/post';
     <br>
     
     
-    <div><h1>Pool Size: {{ exercise.swim.poolSize }}, Laps: {{ exercise.swim.laps }},
-        Time: {{ exercise.swim.time }}, Stroke: {{ exercise.swim.stroke }}</h1></div>
+    <div><h1>Pool Size: {{ workout.exercise?.poolSize }}, Laps: {{ workout.exercise?.laps }},
+        Time: {{ workout.exercise.time }}, Stroke: {{ workout.exercise.stroke }}</h1></div>
 </template>
 
 

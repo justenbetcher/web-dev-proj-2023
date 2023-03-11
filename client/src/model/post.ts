@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 import { useSession } from './session';
-import { setRunWalk, setSwim, type Exercise } from './exercise';
+import { setRunWalk, setSwim, type postWorkout } from './exercise';
 
 const exerciseFeed = ref([] as post[]);
 
@@ -14,11 +14,11 @@ export function useFeed() {
 
 interface post {
     user: string;
-    exercise: Exercise;
+    exercise: postWorkout;
     date: Date;
 }
 
-export function makePost(exercisePassed: Exercise){
+export function makePost(exercisePassed: postWorkout){ 
     exerciseFeed.value.push ({
         user: session.user.name,
         exercise: exercisePassed,

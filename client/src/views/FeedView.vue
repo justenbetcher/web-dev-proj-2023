@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { useFeed } from '@/model/post';
-import type { Swim } from '../model/exercise';
+
 
 
 const feed = useFeed();
+
+
 </script>
 
 <template>
@@ -14,7 +16,7 @@ const feed = useFeed();
             <p>{{ post.user }} exercised</p>
             
             <p>{{ post.exercise }}</p>
-
+            
             <p>{{ post.date }}</p>
         </div>
 

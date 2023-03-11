@@ -1,74 +1,52 @@
 import { ref } from "vue";
 
 
-const Exercises = ref({
-    run: null as RunWalk | null,
-    walk: null as RunWalk | null,
-    swim: null as Swim | null,
-    calistenics: null as CalistenicsWeight | null,
-    weightTraining: null as CalistenicsWeight | null,
-    hiit: null as HIIT | null
+const Workout = ref({
+    exercise: null as Exercise | null
 });
-export interface RunWalk {
-    unit: string;
-    distance: number;
-    time: number;
-}
 
-export interface Swim {
+
+export interface Exercise {
+    name: string;
+    unit: string;
     poolSize: number;
+    distance: number;
     laps: number;
     time: number;
     stroke: string;
 }
 
-interface CalistenicsWeight {
-    exercise: [];
-    time: number;
-}
-
-interface HIIT {
-    exercise: [];
-    totalTime: number;
-    restTime: number;
-    workTime: number;
-}
-
-//an interface so i can pass what exercise the user posts to posts.ts and add it to the feed.
-export interface Exercise {
-    run: RunWalk;
-    walk: RunWalk;
-    swim: Swim;
-    calistenics: CalistenicsWeight;
-    weightLifting: CalistenicsWeight;
-    hiit: HIIT;
+export interface postWorkout{
+    workout: Exercise;
 }
 
 
 
 export function useExercises() {
-    return Exercises;
+    return Workout;
 }
 
 export function setRunWalk(unitPassed: string, distancePassed: number, timePassed: number){
-    Exercises.value.run = {
+    Workout.value.exercise = {
+        name: 'Run/Walk',
         unit: unitPassed,
         distance: distancePassed,
         time: timePassed,
-    }
-    Exercises.value.walk = {
-        unit: unitPassed,
-        distance: distancePassed,
-        time: timePassed,
+        poolSize: 0,
+        laps: 0,
+        stroke: '',
     }
 }
 
 export function setSwim(poolSizePassed: number,lapsPassed: number, timePassed: number, strokePassed: string) {
-    Exercises.value.swim = {
+    Workout.value.exercise = {
+        name: 'Swim',
         poolSize: poolSizePassed,
         laps: lapsPassed,
         time: timePassed,
         stroke: strokePassed,
+        distance: 0,
+        unit: '',
     }
 }
 
