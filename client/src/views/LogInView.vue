@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import { login } from '../model/session.ts'
-import HomeView from './HomeView.vue'
+import { RouterLink, RouterView } from 'vue-router';
+import LogIn from '../components/LogIn.vue';
+
+const isActive = true;
 </script>
+
 
 <template>
 
@@ -10,7 +12,17 @@ import HomeView from './HomeView.vue'
 
     <div class="container">
         <h1 class="has-text-primary">GIT FIT</h1>
+
+
         <div class="box">
+            <div class="field">
+                <RouterLink to='/login-login'>Log In</RouterLink>
+                <RouterLink to='/login-signup'>   Sign Up</RouterLink>
+            </div>
+            
+                <RouterView />
+
+            <!--
             <div class="field">
                 <p class="control has-icons-left has-icons-right">
                 <input class="input" type="email" placeholder="Email">
@@ -30,6 +42,7 @@ import HomeView from './HomeView.vue'
                 </span>
                 </p>
             </div>
+            
             <div class="field">
                 <p class="control">
                     <RouterLink to="/" class="button is-success" @click="login">
@@ -37,6 +50,7 @@ import HomeView from './HomeView.vue'
                     </RouterLink>
                 </p>
             </div>
+            -->
         </div>
     </div>
 
@@ -86,6 +100,7 @@ import HomeView from './HomeView.vue'
             width: 50%;
             margin: 0;
         }
+        
         .is-success{
             background-color: rgb(30, 133, 30) !important;
         }

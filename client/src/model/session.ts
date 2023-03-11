@@ -1,35 +1,64 @@
 import { reactive } from 'vue'
+import type { Post } from './post'
 
 const session = reactive({      //reactive cannot be assigend to a new object, by making a variable user
-                                //always equal interface User we can only creat one instance of User
+                                
     user: null as User | null,
 })
 
-const sessionArray = reactive([] as User[]);
+const userArray = reactive([] as User[]);
 
 interface User {
-    id?: number; // the question mark means the atribute is optional, if nothing is provided it will be undefind
+    id: number; // the question mark means the atribute is optional, if nothing is provided it will be undefind
     name: string;
     email?: string;
     photo?: string;
     token?: string;
+    postHistory?: Post[];
 }
 
 export function useSession() {
     return session;
 }
-export function useSessoinArray() {
-    return sessionArray;
+export function useUserArray() {
+    return userArray;
 }
 
+/*
 export function login() {
     session.user = {
         name: 'john doe',
+        id: 0,
     }
 }
+*/
 
-export function newAccout(namePassed: string, idPassed?: number, emailPassed?: string, photoPassed?: string, tokenPassed?: string) {
-    sessionArray.push ({
-        name: namePassed,
-    });
+export function login(id: number) {
+    for (let i = 0; i < userArray.length; i++) {
+        if (userArray[i].id == id)
+        {
+            session.user = userArray[i];
+            break;
+        }
+    }
+
 }
+
+export function newAccout(namePassed: string) {
+    userArray.push ({
+        name: namePassed,
+        id: userArray.length,
+    });
+    console.log(userArray.length);
+    console.log(userArray);
+}
+
+userArray.push({
+    name: 'Justen Betcher',
+    id: 0,
+})
+
+userArray.push({
+    name: 'John Henrey',
+    id: 1,
+})

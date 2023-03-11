@@ -1,24 +1,28 @@
 import { createRouter, createWebHistory, type NavigationGuardNext, type RouteLocationNormalized } from 'vue-router'
 
 //imports from /views
-import HomeView from '../views/HomeView.vue'
-import LogInView from '../views/LogInView.vue'
-import FriendsView from '../views/FriendsView.vue'
-import HistoryView from '../views/HistoryView.vue'
-import LogExerciseView from '../views/LogExerciseView.vue'
-import FeedView from '../views/FeedView.vue'
+import HomeView from '../views/HomeView.vue';
+import LogInView from '../views/LogInView.vue';
+import FriendsView from '../views/FriendsView.vue';
+import HistoryView from '../views/HistoryView.vue';
+import LogExerciseView from '../views/LogExerciseView.vue';
+import FeedView from '../views/FeedView.vue';
+
+//imports from /components
+import LogIn from '../components/LogIn.vue';
+import SignUp from '../components/SignUp.vue';
 
 
 //imports from /views/LogExercise
-import Calistenics from '../views/LogExerciseViews/Calistenics.vue'
-import HIIT from '../views/LogExerciseViews/HIIT.vue'
-import Run from '../views/LogExerciseViews/Run.vue'
-import Swim from '../views/LogExerciseViews/Swim.vue'
-import Walk from '../views/LogExerciseViews/Walk.vue'
-import WeightTraining from '../views/LogExerciseViews/WeightTraining.vue'
+import Calistenics from '../views/LogExerciseViews/Calistenics.vue';
+import HIIT from '../views/LogExerciseViews/HIIT.vue';
+import Run from '../views/LogExerciseViews/Run.vue';
+import Swim from '../views/LogExerciseViews/Swim.vue';
+import Walk from '../views/LogExerciseViews/Walk.vue';
+import WeightTraining from '../views/LogExerciseViews/WeightTraining.vue';
 
 //imports from model
-import { useSession } from '../model/session.ts'
+import { useSession } from '../model/session.ts';
 
 
 const router = createRouter({
@@ -36,6 +40,16 @@ const router = createRouter({
 			path: '/login',
 			name: 'login',
 			component: LogInView
+		},
+		{
+			path: '/login-login',
+			name:'login-login',
+			component: LogIn
+		},
+		{
+			path: '/login-signup',
+			name: 'login-signup',
+			component: SignUp
 		},
 		{
 			path: '/exercise',

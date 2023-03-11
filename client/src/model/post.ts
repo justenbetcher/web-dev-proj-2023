@@ -2,7 +2,7 @@ import { ref } from 'vue';
 import { useSession } from './session';
 import { setRunWalk, setSwim, type Exercise } from './exercise';
 
-const exerciseFeed = ref([] as post[]);
+const exerciseFeed = ref([] as Post[]);
 
 // to post the name of the person that made the last post.
 const session = useSession();
@@ -12,7 +12,7 @@ export function useFeed() {
 }
 
 
-interface post {
+export interface Post {
     user: string;
     exercise: Exercise;
     date: Date;
