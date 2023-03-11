@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import LogExerciseView from '../LogExerciseView.vue';
 import { useExercises, setSwim } from '../../model/exercise';
+import { makePost } from '@/model/post';
 
     const exercise = useExercises();
     setSwim(0,0,0,'');
@@ -9,7 +10,7 @@ import { useExercises, setSwim } from '../../model/exercise';
 
 <template>
     <LogExerciseView />
-    <div id="swim" class="box">
+    <div class="box">
         <h1 class="title">Log Your Swim!</h1>
 
         <!-- PoolSize input field -->
@@ -41,21 +42,27 @@ import { useExercises, setSwim } from '../../model/exercise';
 
         <!-- Stroke input Feild -->
         <p class="field">Stroke</p>
-        <div class="select">            
-            <select v-model.string="exercise.swim.stroke">
-                <option disabled value="">choose stroke</option>
-                <option value="Butterfly">Butterfly</option>
-                <option value="Freestyle">FreeStyle</option>
-                <option value="Back Stroke">Back Stroke</option>
-                <option value="Breast Stroke">Breast Stroke</option>
-            </select>
+        <div class="field">
+            <div class="select">            
+                <select v-model.string="exercise.swim.stroke">
+                    <option disabled value="">choose stroke</option>
+                    <option value="Butterfly">Butterfly</option>
+                    <option value="Freestyle">FreeStyle</option>
+                    <option value="Back Stroke">Back Stroke</option>
+                    <option value="Breast Stroke">Breast Stroke</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="field">
+            <button class="button is-success submit" @click="makePost(exercise.swim)">
+                <span>Post Your Workout</span>
+            </button>
         </div>
 
     </div>
     <br>
-    <br>
-    <br>
-    <div id="end"></div>
+    
     
     <div><h1>Pool Size: {{ exercise.swim.poolSize }}, Laps: {{ exercise.swim.laps }},
         Time: {{ exercise.swim.time }}, Stroke: {{ exercise.swim.stroke }}</h1></div>
@@ -79,5 +86,8 @@ import { useExercises, setSwim } from '../../model/exercise';
     }
     .field > small{
         font-size: .65em;
+    }
+    .button.submit{
+        height: 2em;
     }
 </style>

@@ -6,6 +6,7 @@ import LogInView from '../views/LogInView.vue'
 import FriendsView from '../views/FriendsView.vue'
 import HistoryView from '../views/HistoryView.vue'
 import LogExerciseView from '../views/LogExerciseView.vue'
+import FeedView from '../views/FeedView.vue'
 
 
 //imports from /views/LogExercise
@@ -50,6 +51,11 @@ const router = createRouter({
 			path: '/history',
 			name: 'history',
 			component: HistoryView
+		},
+		{
+			path: '/feed',
+			name: 'feed',
+			component: FeedView
 		},
 
 		//objects for LogExerciseViews

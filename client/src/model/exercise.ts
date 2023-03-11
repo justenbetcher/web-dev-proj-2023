@@ -8,15 +8,14 @@ const Exercises = ref({
     calistenics: null as CalistenicsWeight | null,
     weightTraining: null as CalistenicsWeight | null,
     hiit: null as HIIT | null
-})
-interface RunWalk {
-    unit: number;
+});
+export interface RunWalk {
+    unit: string;
     distance: number;
     time: number;
-    elevation?: number;
 }
 
-interface Swim {
+export interface Swim {
     poolSize: number;
     laps: number;
     time: number;
@@ -35,6 +34,7 @@ interface HIIT {
     workTime: number;
 }
 
+//an interface so i can pass what exercise the user posts to posts.ts and add it to the feed.
 export interface Exercise {
     run: RunWalk;
     walk: RunWalk;
@@ -50,21 +50,16 @@ export function useExercises() {
     return Exercises;
 }
 
-export function setRun(unitPassed: number, distancePassed: number, timePassed: number, elevationPassed: number){
+export function setRunWalk(unitPassed: string, distancePassed: number, timePassed: number){
     Exercises.value.run = {
         unit: unitPassed,
         distance: distancePassed,
         time: timePassed,
-        elevation: elevationPassed
     }
-}
-
-export function setWalk(unitPassed: number, distancePassed: number, timePassed: number, elevationPassed: number){
     Exercises.value.walk = {
         unit: unitPassed,
         distance: distancePassed,
         time: timePassed,
-        elevation: elevationPassed
     }
 }
 

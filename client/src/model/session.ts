@@ -13,12 +13,16 @@ interface User {
     token?: string,
 }
 
-export function useSession(){
+export function useSession() {
     return session
 }
 
-export function login(){
+export function login() {
     session.user = {
         name: 'john doe',
     }
+}
+
+export function newAccout() {
+    
 }
