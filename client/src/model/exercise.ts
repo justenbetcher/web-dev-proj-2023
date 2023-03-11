@@ -16,9 +16,7 @@ export interface Exercise {
     stroke: string;
 }
 
-export interface postWorkout{
-    workout: Exercise;
-}
+
 
 
 

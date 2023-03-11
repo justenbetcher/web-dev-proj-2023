@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import LogExerciseView from '../LogExerciseView.vue';
-import { useExercises, setSwim } from '../../model/exercise';
+import { useExercises } from '../../model/exercise';
 import { makePost } from '@/model/post';
 
     const workout = useExercises();
