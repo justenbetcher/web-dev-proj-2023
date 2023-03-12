@@ -19,7 +19,13 @@ export interface Post {
 }
 
 export function makePost(exercisePassed: Exercise){ 
-    exerciseFeed.value.push ({
+    exerciseFeed.value.push({
+        user: session.user.name,
+        exercise: exercisePassed,
+        date: new Date(),
+    });
+
+    session.user.postHistory.push({
         user: session.user.name,
         exercise: exercisePassed,
         date: new Date(),

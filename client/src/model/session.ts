@@ -14,7 +14,7 @@ interface User {
     email?: string;
     photo?: string;
     token?: string;
-    postHistory?: Post[];
+    postHistory: Post[];
 }
 
 export function useSession() {
@@ -48,15 +48,18 @@ export function newAccout(namePassed: string) {
     userArray.push ({
         name: namePassed,
         id: userArray.length,
+        postHistory: [],
     });
 }
 
 userArray.push({
     name: 'Justen Betcher',
     id: 0,
+    postHistory: [],
 })
 
 userArray.push({
     name: 'John Henrey',
     id: 1,
+    postHistory: [],
 })
