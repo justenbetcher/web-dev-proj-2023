@@ -8,43 +8,29 @@ const Workout = ref({
 
 export interface Exercise {
     name: string;
-    unit: string;
-    poolSize: number;
-    distance: number;
-    laps: number;
-    time: number;
-    stroke: string;
+    unit?: string;
+    poolSize?: number;
+    distance?: number;
+    laps?: number;
+    time?: number;
+    stroke?: string;
 }
-
-
-
-
 
 export function useExercises() {
     return Workout;
 }
 
-export function setRunWalk(unitPassed: string, distancePassed: number, timePassed: number){
+export function resetExercise(){
     Workout.value.exercise = {
-        name: 'Run/Walk',
-        unit: unitPassed,
-        distance: distancePassed,
-        time: timePassed,
+        name: '',
+        unit: '',
+        distance: 0,
+        time: 0,
         poolSize: 0,
         laps: 0,
         stroke: '',
+
     }
 }
 
-export function setSwim(poolSizePassed: number,lapsPassed: number, timePassed: number, strokePassed: string) {
-    Workout.value.exercise = {
-        name: 'Swim',
-        poolSize: poolSizePassed,
-        laps: lapsPassed,
-        time: timePassed,
-        stroke: strokePassed,
-        distance: 0,
-        unit: '',
-    }
-}
 

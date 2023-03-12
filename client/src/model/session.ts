@@ -49,8 +49,6 @@ export function newAccout(namePassed: string) {
         name: namePassed,
         id: userArray.length,
     });
-    console.log(userArray.length);
-    console.log(userArray);
 }
 
 userArray.push({

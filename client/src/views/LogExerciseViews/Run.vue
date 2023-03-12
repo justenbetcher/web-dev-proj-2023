@@ -4,7 +4,6 @@ import { useExercises } from '@/model/exercise';
 import { makePost } from '@/model/post';
 
     const workout = useExercises();
-
     workout.value.exercise = {
         name: 'Run',
         unit: '',
@@ -14,6 +13,20 @@ import { makePost } from '@/model/post';
         laps: 0,
         stroke: '',
     }
+
+    /*
+    const unit = ref('');
+    const distance = ref();
+    const time = ref();
+
+    const workout: Exercise = {
+        name: 'Run',
+        unit: unit.value,
+        distance: distance.value,
+        time: time.value,
+
+    }
+    */
 
 </script>
 
@@ -39,12 +52,12 @@ import { makePost } from '@/model/post';
             </div>
         </div>
         <div class="field">
-            <input class="input" type="text" placeholder="Distance" v-model="workout.exercise.distance">
+            <input class="input" type="number" placeholder="Distance" v-model="workout.exercise.distance">
         </div>
 
-        <p class="field">Time</p>
+        <p class="field">Time <small>(in minutes)</small></p>
         <div class="field">
-            <input class="input" type="text" placeholder="Time" v-model="workout.exercise.time">
+            <input class="input" type="number" placeholder="Time" v-model="workout.exercise.time">
         </div>
     </div>
 
@@ -70,5 +83,11 @@ import { makePost } from '@/model/post';
     }
     .box > p{
         font-size: 1.25em;
+    }
+    .field.distance, .field.time{
+        width: 40%;
+    }
+    .field > small{
+        font-size: .65em;
     }
 </style>

@@ -42,7 +42,7 @@
             <div class="navbar-item">
                 <div class="field is-grouped">
                     <p class="control">
-                        <RouterLink to='/login-login' class="button is-primary" href="#" @click="session.user = null">
+                        <RouterLink to='/login' class="button is-primary" href="#" @click="session.user = null">
                             <span class="icon">
                                 <i class="fas fa-right-from-bracket"></i>
                             </span>

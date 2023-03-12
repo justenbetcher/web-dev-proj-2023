@@ -15,9 +15,7 @@ const feed = useFeed();
         <div class="box" v-for="post, i in feed">
             <p>{{ post.user }} exercised</p>
             
-            <div v-if="post.exercise.name === 'Swim'">
-                we are swimming
-            </div>
+            <p>{{ post.exercise }}</p>
             
             <p>{{ post.date }}</p>
         </div>

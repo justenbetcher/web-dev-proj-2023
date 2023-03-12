@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 import { useSession } from './session';
-import { setRunWalk, setSwim, type Exercise } from './exercise';
+import { resetExercise, type Exercise } from './exercise';
 
 const exerciseFeed = ref([] as Post[]);
 
@@ -25,8 +25,5 @@ export function makePost(exercisePassed: Exercise){
         date: new Date(),
     });
 
-    console.log(exerciseFeed.value)
-
-    setSwim(0,0,0,'');
-    setRunWalk('',0,0,);
+    resetExercise();
 }

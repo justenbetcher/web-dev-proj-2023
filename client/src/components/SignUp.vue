@@ -1,6 +1,10 @@
 <script setup lang="ts">
-import { useUserArray } from '../model/session';
+import { newAccout } from '../model/session';
+import { ref } from 'vue';
 
+
+
+const name = ref('');
 </script>
 
 <template>
@@ -8,7 +12,7 @@ import { useUserArray } from '../model/session';
 
     <div class="field">
         <p class="control has-icons-left has-icons-right">
-        <input class="input" type="text" placeholder="Name">
+        <input class="input" type="text" placeholder="Name" v-model="name">
         <span class="icon is-small is-left">
             <i class="fas fa-person"></i>
         </span>
@@ -33,6 +37,14 @@ import { useUserArray } from '../model/session';
         </span>
         </p>
     </div>
+
+    <div class="field">
+        <RouterLink to='/login' class="button is-success submit" @click="newAccout(name)">
+            <span>Create Account</span>
+        </RouterLink>
+    </div>
+
+    <div><h1>name: {{ name }} </h1></div>
 </template>
 
 

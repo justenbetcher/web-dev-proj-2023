@@ -9,8 +9,6 @@ import LogExerciseView from '../views/LogExerciseView.vue';
 import FeedView from '../views/FeedView.vue';
 
 //imports from /components
-import LogIn from '../components/LogIn.vue';
-import SignUp from '../components/SignUp.vue';
 
 
 //imports from /views/LogExercise
@@ -40,16 +38,6 @@ const router = createRouter({
 			path: '/login',
 			name: 'login',
 			component: LogInView
-		},
-		{
-			path: '/login-login',
-			name:'login-login',
-			component: LogIn
-		},
-		{
-			path: '/login-signup',
-			name: 'login-signup',
-			component: SignUp
 		},
 		{
 			path: '/exercise',

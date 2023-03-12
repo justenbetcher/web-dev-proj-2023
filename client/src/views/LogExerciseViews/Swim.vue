@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import LogExerciseView from '../LogExerciseView.vue';
-import { useExercises } from '../../model/exercise';
+import  { useExercises } from '../../model/exercise';
 import { makePost } from '@/model/post';
 
+    
     const workout = useExercises();
-
     workout.value.exercise = {
         name: 'Swim',
         unit: '',
@@ -14,7 +14,17 @@ import { makePost } from '@/model/post';
         laps: 0,
         stroke: '',
     }
-
+    
+    /*
+    const work: Exercise = ref({
+        name: 'Swim',
+        unit: '',
+        distance: 0,
+        time: 0,
+        poolSize: 0,
+        laps: 0,
+        stroke: '',
+    });*/
 </script>
 
 <template>
@@ -73,7 +83,7 @@ import { makePost } from '@/model/post';
     <br>
     
     
-    <div><h1>Pool Size: {{ workout.exercise?.poolSize }}, Laps: {{ workout.exercise?.laps }},
+    <div><h1>Pool Size: {{ workout.exercise.poolSize }}, Laps: {{ workout.exercise.laps }},
         Time: {{ workout.exercise.time }}, Stroke: {{ workout.exercise.stroke }}</h1></div>
 </template>
 
@@ -100,3 +110,4 @@ import { makePost } from '@/model/post';
         height: 2em;
     }
 </style>
+

@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router';
+import { ref } from 'vue';
 import LogIn from '../components/LogIn.vue';
+import SignUp from '../components/SignUp.vue'
 
-const isActive = true;
+const isLogIn = ref(true);
 </script>
 
 
@@ -16,11 +17,20 @@ const isActive = true;
 
         <div class="box">
             <div class="field">
+                <a href="#" @click="isLogIn = true">Log In</a>
+                <a href="#" @click="isLogIn = false">  Sign Up</a>
+                <!--
                 <RouterLink to='/login-login'>Log In</RouterLink>
                 <RouterLink to='/login-signup'>   Sign Up</RouterLink>
+                -->
+            </div>
+            <div v-if="isLogIn == true">
+                <LogIn />
+            </div>
+            <div v-else>
+                <SignUp />
             </div>
             
-                <RouterView />
 
             <!--
             <div class="field">
