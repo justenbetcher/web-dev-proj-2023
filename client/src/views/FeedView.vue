@@ -13,11 +13,20 @@ const feed = useFeed();
         <h1 class="title">Feed Your Motivatoin</h1>
 
         <div class="box" v-for="post, i in feed">
-            <p>{{ post.user }} exercised</p>
+            <p class="post-name">{{ post.user }}</p>
             
-            <p>{{ post.exercise }}</p>
-            
+            <div v-if="post.exercise.name == 'Swim'">
+                <p>PoolSize: {{ post.exercise.poolSize }} (meters)</p>
+                <p>Laps: {{ post.exercise.laps }}</p>
+                <p>Stroke: {{ post.exercise.stroke }}</p>
+            </div>
+            <div v-else>
+                <p>Unit: {{ post.exercise.unit }}</p>
+                <p>Distance: {{ post.exercise.distance }}</p>
+            </div>
+            <p>Time: {{ post.exercise.time }} (min)</p>
             <p>{{ post.date }}</p>
+            <p>{{ post.postID }}</p>
         </div>
 
     </div>
@@ -26,9 +35,15 @@ const feed = useFeed();
 
 
 <style scoped>
-.conatainer{
+.container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.box{
+    width: 40%;
 }
 
 </style>
