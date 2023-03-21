@@ -35,7 +35,7 @@ export function makePost(exercisePassed: Exercise){
         postID: session.user.name + date,
     });
 
-    resetExercise();
+    resetExercise('');
 }
 
 export function deletePost(index: number) {

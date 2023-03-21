@@ -18,11 +18,12 @@ const currentUser = useSession();
                 <p>Laps: {{ post.exercise.laps }}</p>
                 <p>Stroke: {{ post.exercise.stroke }}</p>
             </div>
-            <div v-else>
+            <div v-else-if="post.exercise.name == 'Run' || post.exercise.name == 'Walk'">
                 <p>Unit: {{ post.exercise.unit }}</p>
                 <p>Distance: {{ post.exercise.distance }}</p>
             </div>
             <p>Time: {{ post.exercise.time }} (min)</p>
+            <p>{{  post.exercise.comment }}</p>
             <p>{{ post.date }}</p>
             <p>{{ post.postID }}</p>
 

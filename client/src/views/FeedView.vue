@@ -20,11 +20,17 @@ const feed = useFeed();
                 <p>Laps: {{ post.exercise.laps }}</p>
                 <p>Stroke: {{ post.exercise.stroke }}</p>
             </div>
-            <div v-else>
+            <div v-else-if="post.exercise.name == 'Run' || post.exercise.name == 'Walk'">
                 <p>Unit: {{ post.exercise.unit }}</p>
                 <p>Distance: {{ post.exercise.distance }}</p>
             </div>
+            <div v-else>
+                <div v-for="movment, i in post.exercise.circuitArray">
+                    <p>{{ movment }}</p>
+                </div>
+            </div>
             <p>Time: {{ post.exercise.time }} (min)</p>
+            <p>{{  post.exercise.comment }}</p>
             <p>{{ post.date }}</p>
             <p>{{ post.postID }}</p>
         </div>

@@ -1,18 +1,10 @@
 <script setup lang="ts">
 import LogExerciseView from '../LogExerciseView.vue';
-import { useExercises } from '@/model/exercise';
+import { useExercises, resetExercise } from '@/model/exercise';
 import { makePost } from '@/model/post';
 
     const workout = useExercises();
-    workout.value.exercise = {
-        name: 'Run',
-        unit: '',
-        distance: 0,
-        time: 0,
-        poolSize: 0,
-        laps: 0,
-        stroke: '',
-    }
+    resetExercise('Run');
 
     /*
     const unit = ref('');
@@ -60,6 +52,11 @@ import { makePost } from '@/model/post';
             <input class="input" type="number" placeholder="Time" v-model="workout.exercise.time">
         </div>
 
+        <p class="field">Additional comments for your workout</p>
+        <div class="field">
+            <textarea type="text" class="textarea" placeholder="comments on your workout" v-model="workout.exercise.comment"></textarea>
+        </div>
+
         <div class="field">
             <button class="button is-success submit" @click="makePost(workout.exercise)">
                 <span>Post Your Workout</span>
@@ -67,10 +64,9 @@ import { makePost } from '@/model/post';
         </div>
     </div>
 
-    
-
     <br>
-    <div><h1>Unit: {{ workout.exercise.unit }}, Distance: {{ workout.exercise.distance }}, Time: {{ workout.exercise.time }}</h1></div>
+    <div><h1>Unit: {{ workout.exercise.unit }}, Distance: {{ workout.exercise.distance }}, 
+        Time: {{ workout.exercise.time }}, Comment: {{ workout.exercise.comment }}</h1></div>
 </template>
 
 

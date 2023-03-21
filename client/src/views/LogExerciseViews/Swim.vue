@@ -1,30 +1,12 @@
 <script setup lang="ts">
 import LogExerciseView from '../LogExerciseView.vue';
-import  { useExercises } from '../../model/exercise';
+import  { useExercises, resetExercise } from '../../model/exercise';
 import { makePost } from '@/model/post';
 
     
     const workout = useExercises();
-    workout.value.exercise = {
-        name: 'Swim',
-        unit: '',
-        distance: 0,
-        time: 0,
-        poolSize: 0,
-        laps: 0,
-        stroke: '',
-    }
-    
-    /*
-    const work: Exercise = ref({
-        name: 'Swim',
-        unit: '',
-        distance: 0,
-        time: 0,
-        poolSize: 0,
-        laps: 0,
-        stroke: '',
-    });*/
+    resetExercise('Swim');
+
 </script>
 
 <template>
@@ -73,6 +55,11 @@ import { makePost } from '@/model/post';
             </div>
         </div>
 
+        <p class="field">Additional comments for your workout</p>
+        <div class="field">
+            <textarea type="text" class="textarea" placeholder="comments on your workout" v-model="workout.exercise.comment"></textarea>
+        </div>
+
         <div class="field">
             <button class="button is-success submit" @click="makePost(workout.exercise)">
                 <span>Post Your Workout</span>
@@ -84,7 +71,7 @@ import { makePost } from '@/model/post';
     
     
     <div><h1>Pool Size: {{ workout.exercise.poolSize }}, Laps: {{ workout.exercise.laps }},
-        Time: {{ workout.exercise.time }}, Stroke: {{ workout.exercise.stroke }}</h1></div>
+        Time: {{ workout.exercise.time }}, Stroke: {{ workout.exercise.stroke }}, Comment: {{ workout.exercise.comment }}</h1></div>
 </template>
 
 
@@ -106,8 +93,6 @@ import { makePost } from '@/model/post';
     .field > small{
         font-size: .65em;
     }
-    .button.submit{
-        height: 2em;
-    }
+    
 </style>
 

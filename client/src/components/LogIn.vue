@@ -33,7 +33,7 @@ const isActive = ref(false);
 
     <div class="dropdown" v-bind:class="{ 'is-active' : isActive }" @click="isActive = !isActive">
         <div class="dropdown-trigger">
-            <button class="button is-primary" aria-haspopup="true" aria-controls="dropdown-menu">
+            <button class="button is-success" aria-haspopup="true" aria-controls="dropdown-menu">
                 <span>Log In</span>
                 <span class="icon is-small">
                     <i class="fas fa-angle-down" aria-hidden="true"></i>

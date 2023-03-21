@@ -3,13 +3,13 @@ import { useSession, lastWorkout } from '../model/session';
 import { RouterLink, RouterView } from 'vue-router';
 
 
-const session = useSession();
+const currentUser = useSession();
 </script>
 
 <template>
-    <div v-if="session.user">
-        <h1>Welcome {{ session.user.name }}</h1>
-        <div v-if="session.user.postHistory.length != 0">
+    <div class="container">
+        <h1 class="title">Welcome, {{ currentUser.user.name }}</h1>
+        <div v-if="currentUser.user.postHistory.length != 0">
             <p>your last workout was {{ lastWorkout() }} milliseconds ago</p>
         </div>
         <div v-else>
@@ -21,5 +21,12 @@ const session = useSession();
 
 
 <style scoped>
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
 
 </style>
