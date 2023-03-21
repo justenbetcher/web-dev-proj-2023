@@ -59,13 +59,15 @@ import { makePost } from '@/model/post';
         <div class="field">
             <input class="input" type="number" placeholder="Time" v-model="workout.exercise.time">
         </div>
-    </div>
 
-    <div class="field">
+        <div class="field">
             <button class="button is-success submit" @click="makePost(workout.exercise)">
                 <span>Post Your Workout</span>
             </button>
         </div>
+    </div>
+
+    
 
     <br>
     <div><h1>Unit: {{ workout.exercise.unit }}, Distance: {{ workout.exercise.distance }}, Time: {{ workout.exercise.time }}</h1></div>

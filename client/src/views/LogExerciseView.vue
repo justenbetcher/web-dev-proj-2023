@@ -26,6 +26,7 @@
         </div>
 
         <!-- third column -->
+        <!--
         <div class="column">
 
             <RouterLink to="/exercise-hiit" class="box hiit">HIIT</RouterLink>
@@ -33,6 +34,7 @@
             <RouterLink to="/exercise-calistenics" class="box calistenics">CALISTENICS</RouterLink>
 
         </div>
+        -->
     </div>
 </div>
 
@@ -67,6 +69,7 @@
         color: white;
         font-weight: bolder;
         font-size: 2em;
+        background-position: center;
         
     }
     .box.run{

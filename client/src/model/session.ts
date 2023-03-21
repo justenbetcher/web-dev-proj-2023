@@ -52,6 +52,11 @@ export function newAccout(namePassed: string) {
     });
 }
 
+export function lastWorkout() {
+    let days = (session.user.postHistory[session.user.postHistory.length - 1].date.valueOf()) - new Date().valueOf();
+    return Math.abs(days);
+}
+
 userArray.push({
     name: 'Justen Betcher',
     id: 0,

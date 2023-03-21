@@ -4,6 +4,7 @@ import LogIn from '../components/LogIn.vue';
 import SignUp from '../components/SignUp.vue'
 
 const isLogIn = ref(true);
+const isActive = ref(true);
 </script>
 
 
@@ -17,8 +18,8 @@ const isLogIn = ref(true);
 
         <div class="box">
             <div class="field">
-                <a href="#" @click="isLogIn = true">Log In</a>
-                <a href="#" @click="isLogIn = false">  Sign Up</a>
+                <a v-bind:class="{ 'is-active': isLogIn }" href="#" @click="isLogIn = true">Log In</a>
+                <a class="ml-2" v-bind:class="{ 'is-active': !isLogIn }" href="#" @click="isLogIn = false">Sign Up</a>
                 <!--
                 <RouterLink to='/login-login'>Log In</RouterLink>
                 <RouterLink to='/login-signup'>   Sign Up</RouterLink>
@@ -109,6 +110,10 @@ const isLogIn = ref(true);
         .box{
             width: 50%;
             margin: 0;
+        }
+
+        .is-active {
+            text-decoration: underline;
         }
         
         .is-success{

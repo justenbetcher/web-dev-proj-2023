@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
 import { login, useUserArray, newAccout } from '../model/session';
+import { ref } from 'vue';
 
 const userArray = useUserArray();
+const isActive = ref(false);
 
 
 </script>
@@ -29,10 +31,10 @@ const userArray = useUserArray();
     </div>
     
 
-    <div class="dropdown is-active">
+    <div class="dropdown" v-bind:class="{ 'is-active' : isActive }" @click="isActive = !isActive">
         <div class="dropdown-trigger">
-            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                <span>Dropdown button</span>
+            <button class="button is-primary" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Log In</span>
                 <span class="icon is-small">
                     <i class="fas fa-angle-down" aria-hidden="true"></i>
                 </span>

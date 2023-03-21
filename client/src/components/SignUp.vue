@@ -43,8 +43,9 @@ const name = ref('');
             <span>Create Account</span>
         </RouterLink>
     </div>
-
+    <!--
     <div><h1>name: {{ name }} </h1></div>
+    -->
 </template>
 
 

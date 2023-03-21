@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { useSession } from '../model/session'
+import { useSession, lastWorkout } from '../model/session';
+import { RouterLink, RouterView } from 'vue-router';
+
 
 const session = useSession();
 </script>
@@ -7,6 +9,12 @@ const session = useSession();
 <template>
     <div v-if="session.user">
         <h1>Welcome {{ session.user.name }}</h1>
+        <div v-if="session.user.postHistory.length != 0">
+            <p>your last workout was {{ lastWorkout() }} milliseconds ago</p>
+        </div>
+        <div v-else>
+            <p>Jump right into it and post your first workout here</p>
+        </div>
     </div>
 
 </template>
