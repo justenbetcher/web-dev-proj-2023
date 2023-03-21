@@ -25,7 +25,7 @@ const feed = useFeed();
                 <p>Distance: {{ post.exercise.distance }}</p>
             </div>
             <div v-else>
-                <div v-for="movment, i in post.exercise.circuitArray">
+                <div v-for="movment in post.exercise.circuitArray">
                     <p>{{ movment }}</p>
                 </div>
             </div>
