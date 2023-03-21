@@ -9,30 +9,47 @@ const feed = useFeed();
 </script>
 
 <template>
+    <h1 class="title">Feed Your Motivatoin</h1>
     <div class="container">
-        <h1 class="title">Feed Your Motivatoin</h1>
+        
 
         <div class="box" v-for="post, i in feed">
-            <p class="post-name">{{ post.user }}</p>
             
             <div v-if="post.exercise.name == 'Swim'">
-                <p>PoolSize: {{ post.exercise.poolSize }} (meters)</p>
-                <p>Laps: {{ post.exercise.laps }}</p>
-                <p>Stroke: {{ post.exercise.stroke }}</p>
+                <p class="post-name"><bolder>{{ post.user }}</bolder> went for a swim today!</p>
+                <img src="../assets/img/LogExerciseImg/swim.jpeg">
+                <p><bold>PoolSize:</bold> {{ post.exercise.poolSize }} (meters)</p>
+                <p><bold>Laps:</bold> {{ post.exercise.laps }}</p>
+                <p><bold>Stroke:</bold> {{ post.exercise.stroke }}</p>
             </div>
-            <div v-else-if="post.exercise.name == 'Run' || post.exercise.name == 'Walk'">
-                <p>Unit: {{ post.exercise.unit }}</p>
-                <p>Distance: {{ post.exercise.distance }}</p>
+
+            <div v-else-if="post.exercise.name == 'Walk'">
+                <p class="post-user"><bolder>{{ post.user }}</bolder> went for a walk today!</p>
+                <img src="../assets/img/LogExerciseImg/walk.jpeg">
+                <p><bold>Unit:</bold> {{ post.exercise.unit }}</p>
+                <p><bold>Distance:</bold> {{ post.exercise.distance }}</p>
             </div>
+
+            <div v-else-if="post.exercise.name == 'Run'">
+                <p class="post-user"><bolder>{{ post.user }}</bolder> went for a run today!</p>
+                <img src="../assets/img/LogExerciseImg/run.jpeg">
+                <p><bold>Unit:</bold> {{ post.exercise.unit }}</p>
+                <p><bold>Distance:</bold> {{ post.exercise.distance }}</p>
+            </div>
+
             <div v-else>
-                <div v-for="movment in post.exercise.circuitArray">
-                    <p>{{ movment }}</p>
-                </div>
+                <p class="post-user"><bolder>{{ post.user }}</bolder> went to the gym today!</p>
+                <img src="../assets/img/LogExerciseImg/weight-training.jpeg">
+                <p><bold>Exercises/ Movments</bold></p>
+                <ol>
+                        <li v-for="movment in post.exercise.circuitArray">{{ movment }}</li>
+                </ol>
             </div>
-            <p>Time: {{ post.exercise.time }} (min)</p>
-            <p>{{  post.exercise.comment }}</p>
-            <p>{{ post.date }}</p>
-            <p>{{ post.postID }}</p>
+            <p><bold>Time:</bold> {{ post.exercise.time }} (min)</p>
+            <p><bold>Comment:</bold></p>
+            <p class="comment">{{ post.exercise.comment }}</p>
+            <br>
+            <p><small>{{ post.date }}</small></p>
         </div>
 
     </div>
@@ -41,15 +58,36 @@ const feed = useFeed();
 
 
 <style scoped>
+h1 {
+    text-align: center;
+}
 .container{
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
 
 }
 .box{
     width: 40%;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+ol{
+    margin-left: 40px;
+}
+p > bolder {
+    font-weight: bolder;
+    font-size: 1.35em;
+}
+p > bold {
+    font-weight: bold;
+}
+p > small {
+    font-size: .75em;
+}
+.comment {
+    margin-left: 20px;
 }
 
 </style>

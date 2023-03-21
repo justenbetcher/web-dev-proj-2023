@@ -38,6 +38,5 @@ export function resetExercise(workoutType: string){
 
 export function enterCircuit(movments: string) {
     Workout.value.exercise.circuitArray = movments.split('\n');
-    console.log(Workout.value.exercise.circuitArray)
 }
 

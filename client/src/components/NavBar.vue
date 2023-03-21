@@ -29,8 +29,6 @@
                 
                 <RouterLink to="/exercise" class="navbar-item">Log Exercise</RouterLink>
 
-                <RouterLink to="/friends" class="navbar-item">Friends</RouterLink>
-
                 <RouterLink to="/history" class="navbar-item">History</RouterLink>
 
                 <RouterLink to="/feed" class="navbar-item">Feed</RouterLink>

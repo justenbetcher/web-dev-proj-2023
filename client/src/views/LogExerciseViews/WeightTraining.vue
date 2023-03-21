@@ -20,12 +20,21 @@ import { ref } from 'vue';
             <textarea type="text" class="textarea" placeholder="enter movments here" v-model="movments"></textarea>
         </div>
 
+        <p class="field">Time <small>(in minutes)</small></p>
+        <div class="field">
+            <input class="input" type="text" placeholder="Time" v-model.number="workout.exercise.time">
+        </div>
+
+        <p class="field">Additional comments for your workout</p>
+        <div class="field">
+            <textarea type="text" class="textarea" placeholder="comments on your workout" v-model="workout.exercise.comment"></textarea>
+        </div>
+
         <div class="field">
             <button class="button is-success submit" @click="enterCircuit(movments); makePost(workout.exercise); movments = ''">
                 <span>Post Your Workout</span>
             </button>
         </div>
-
     </div>
 </template>
 
@@ -38,5 +47,8 @@ import { ref } from 'vue';
 }
 .box > h1 {
     text-align: center;
+}
+.field > small {
+    font-size: .65em;
 }
 </style>

@@ -3,17 +3,11 @@ import { createRouter, createWebHistory, type NavigationGuardNext, type RouteLoc
 //imports from /views
 import HomeView from '../views/HomeView.vue';
 import LogInView from '../views/LogInView.vue';
-import FriendsView from '../views/FriendsView.vue';
 import HistoryView from '../views/HistoryView.vue';
 import LogExerciseView from '../views/LogExerciseView.vue';
 import FeedView from '../views/FeedView.vue';
 
-//imports from /components
-
-
 //imports from /views/LogExercise
-import Calistenics from '../views/LogExerciseViews/Calistenics.vue';
-import HIIT from '../views/LogExerciseViews/HIIT.vue';
 import Run from '../views/LogExerciseViews/Run.vue';
 import Swim from '../views/LogExerciseViews/Swim.vue';
 import Walk from '../views/LogExerciseViews/Walk.vue';
@@ -45,11 +39,6 @@ const router = createRouter({
 			component: LogExerciseView
 		},
 		{
-			path: '/friends',
-			name: 'friends',
-			component: FriendsView
-		},
-		{
 			path: '/history',
 			name: 'history',
 			component: HistoryView
@@ -61,16 +50,6 @@ const router = createRouter({
 		},
 
 		//objects for LogExerciseViews
-		{
-			path: '/exercise-calistenics',
-			name: 'calistenics',
-			component: Calistenics
-		},
-		{
-			path: '/exercise-hiit',
-			name: 'hiit',
-			component: HIIT
-		},
 		{
 			path: '/exercise-run',
 			name: 'run',
