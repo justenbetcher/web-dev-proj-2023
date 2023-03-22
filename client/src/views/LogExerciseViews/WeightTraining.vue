@@ -50,6 +50,6 @@ import { ref } from 'vue';
     text-align: center;
 }
 .field > small {
-    font-size: .65em;
+    font-size: .85em;
 }
 </style>

@@ -8,7 +8,6 @@ const name = ref('');
 </script>
 
 <template>
-    <h1 class="title">Sign Up</h1>
 
     <div class="field">
         <p class="control has-icons-left has-icons-right">
@@ -21,6 +20,7 @@ const name = ref('');
         </span>
         </p>
     </div>
+
     <div class="field">
         <p class="control has-icons-left">
         <input class="input" type="email" placeholder="Email">
@@ -29,6 +29,7 @@ const name = ref('');
         </span>
         </p>
     </div>
+    
     <div class="field">
         <p class="control has-icons-left">
         <input class="input" type="password" placeholder="Password">

@@ -13,7 +13,8 @@ const isActive = ref(false);
     <h1 class="title">Your past Workouts</h1>
 
     <div class="columns" v-if="session.user != null">
-        <div class="box" v-for="post, i in session.user.postHistory">
+        <div class="box" v-for="post, i in session.user.postHistory.slice().reverse()">
+
             <div v-if="post.exercise.name == 'Swim'">
                 <p class="post-name"><bolder>{{ post.user }}</bolder> went for a swim today!</p>
                 <img src="../assets/img/LogExerciseImg/swim.jpeg">
@@ -48,7 +49,7 @@ const isActive = ref(false);
             <p><bold>Comment:</bold></p>
             <p class="comment">{{ post.exercise.comment }}</p>
             <br>
-            <p><small>{{ post.date }}</small></p>
+            <p class="date"><small>{{ post.date }}</small></p>
 
             <button class="button is-danger" v-bind:class="{ 'is-active': isActive }" @click="deletePost(i)">
                 <span>X</span>
@@ -66,16 +67,17 @@ const isActive = ref(false);
 
 <style scoped>
 .columns{
-    flex-direction: row-reverse;
-    flex-wrap: wrap-reverse;
-    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
     align-items: center;
 }
 .box{
     width: 30%;
     position: relative;
-    overflow:visible;
+    overflow: visible;
     margin-right: 15px;
+    margin-bottom: 24px;
     height: 500px;
 }
 img {
@@ -115,6 +117,10 @@ button.is-danger {
     position: absolute;
     top: 0;
     right: 0;
+}
+.date {
+    position: absolute;
+    bottom: 7px;
 }
 
 </style>

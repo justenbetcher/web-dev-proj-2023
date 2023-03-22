@@ -13,7 +13,7 @@ const session = useSession();
             <p>your last workout was {{ lastWorkout() }} milliseconds ago</p>
         </div>
         <div v-else>
-            <p>Jump right into it and post your first workout here</p>
+            <p>Jump right into it and post your first workout <RouterLink to='/exercise'>here</RouterLink></p>
         </div>
     </div>
 
@@ -26,7 +26,19 @@ const session = useSession();
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 15px;
+    background-image: url('../assets/img/homebkg.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 600px;
+    color: white;
 }
+h1 {
+    font-size: 2em;
+}
+p {
+    font-size: 1.45em;
+}
+
+
 
 </style>
