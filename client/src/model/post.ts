@@ -19,7 +19,10 @@ export interface Post {
     postID: string;
 }
 
-export function makePost(exercisePassed: Exercise){ 
+export function makePost(exercisePassed: Exercise | null) { 
+    if (exercisePassed == null || session.user == null) {
+        return;
+    }
     let date = new Date().valueOf();
     exerciseFeed.value.push({
         user: session.user.name,
@@ -39,6 +42,9 @@ export function makePost(exercisePassed: Exercise){
 }
 
 export function deletePost(index: number) {
+    if (session.user == null) {
+        return;
+    }
     const ID = session.user.postHistory[index].postID;
 
     for(let i = 0; i < exerciseFeed.value.length; i++) {

@@ -3,16 +3,17 @@ import { deletePost } from '@/model/post';
 import { useSession } from '../model/session';
 import { ref } from 'vue';
 
-const currentUser = useSession();
+const session = useSession();
 const isActive = ref(false);
 
 </script>
 
 <template>
+
     <h1 class="title">Your past Workouts</h1>
 
-    <div class="columns">
-        <div class="box" v-for="post, i in currentUser.user.postHistory">
+    <div class="columns" v-if="session.user != null">
+        <div class="box" v-for="post, i in session.user.postHistory">
             <div v-if="post.exercise.name == 'Swim'">
                 <p class="post-name"><bolder>{{ post.user }}</bolder> went for a swim today!</p>
                 <img src="../assets/img/LogExerciseImg/swim.jpeg">
@@ -58,6 +59,7 @@ const isActive = ref(false);
     <button class="button is-transparent edit" @click="isActive = !isActive">
         <span>edit</span>
     </button>
+    
 </template>
 
 

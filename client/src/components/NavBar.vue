@@ -2,12 +2,12 @@
     import {RouterLink, RouterView} from 'vue-router';
     import { useSession, login } from '../model/session';
 
-    const currentUser = useSession()
+    const session = useSession()
 </script>
 
 <template>
 
-    <nav class="navbar is-transparent">
+    <nav class="navbar is-transparent" v-if="session.user != null">
         <div class="navbar-brand">
 
             <a class="navbar-item" href="#">
@@ -37,11 +37,11 @@
         </div>
     
         <div class="navbar-end">
-            <p class="navbar-item">{{ currentUser.user.name }}</p>
+            <p class="navbar-item">{{ session.user.name }}</p>
             <div class="navbar-item">
                 <div class="field is-grouped">
                     <p class="control">
-                        <RouterLink to='/login' class="button is-primary" href="#" @click="currentUser.user = null">
+                        <RouterLink to='/login' class="button is-primary" href="#" @click="session.user = null">
                             <span class="icon">
                                 <i class="fas fa-right-from-bracket"></i>
                             </span>

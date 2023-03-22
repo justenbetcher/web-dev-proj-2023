@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import {RouterLink, RouterView} from 'vue-router'
 import LogExerciseView from '../LogExerciseView.vue';
 import { useExercises, resetExercise, enterCircuit } from '../../model/exercise';
 import { makePost } from '@/model/post';
@@ -12,10 +11,11 @@ import { ref } from 'vue';
 
 <template>
     <LogExerciseView />
-    <div class="box">
+
+    <div class="box" v-if="workout.exercise != null">
         <h1 class="title">Log your gym workout</h1>
 
-        <p class="field">Enter Movments <small>(after each movment press enter)</small></p>
+        <p class="field">Enter Movments <small>(seperate each movment with a ';' and a space)</small></p>
         <div class="field">
             <textarea type="text" class="textarea" placeholder="enter movments here" v-model="movments"></textarea>
         </div>
@@ -36,6 +36,7 @@ import { ref } from 'vue';
             </button>
         </div>
     </div>
+
 </template>
 
 

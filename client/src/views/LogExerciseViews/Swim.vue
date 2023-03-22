@@ -11,7 +11,8 @@ import { makePost } from '@/model/post';
 
 <template>
     <LogExerciseView />
-    <div class="box">
+
+    <div class="box" v-if="workout.exercise != null">
         <h1 class="title">Log Your Swim!</h1>
 
         <!-- PoolSize input field -->
@@ -66,12 +67,15 @@ import { makePost } from '@/model/post';
             </button>
         </div>
 
+        <div>
+            <h1>
+                Pool Size: {{ workout.exercise.poolSize }}, Laps: {{ workout.exercise.laps }},
+                Time: {{ workout.exercise.time }}, Stroke: {{ workout.exercise.stroke }}, Comment: {{ workout.exercise.comment }}
+            </h1>
+        </div>
+
     </div>
-    <br>
-    
-    
-    <div><h1>Pool Size: {{ workout.exercise.poolSize }}, Laps: {{ workout.exercise.laps }},
-        Time: {{ workout.exercise.time }}, Stroke: {{ workout.exercise.stroke }}, Comment: {{ workout.exercise.comment }}</h1></div>
+
 </template>
 
 

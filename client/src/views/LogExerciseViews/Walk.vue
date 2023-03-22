@@ -24,8 +24,8 @@ import { makePost } from '@/model/post';
 
 <template>
     <LogExerciseView />
-
-    <div class="box">
+    
+    <div class="box" v-if="workout.exercise != null">
         <h1 class="title">Log Your Walk!</h1>
 
         <p class="field">Distance</p>
@@ -62,11 +62,15 @@ import { makePost } from '@/model/post';
                 <span>Post Your Workout</span>
             </button>
         </div>
-    </div>
 
-    <br>
-    <div><h1>Unit: {{ workout.exercise.unit }}, Distance: {{ workout.exercise.distance }}, 
-        Time: {{ workout.exercise.time }}, Comment: {{ workout.exercise.comment }}</h1></div>
+        <div>
+            <h1>
+                Unit: {{ workout.exercise.unit }}, Distance: {{ workout.exercise.distance }}, 
+                Time: {{ workout.exercise.time }}, Comment: {{ workout.exercise.comment }}
+            </h1>
+        </div>
+    </div>
+    
 </template>
 
 

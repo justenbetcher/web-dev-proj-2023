@@ -14,7 +14,7 @@ import Walk from '../views/LogExerciseViews/Walk.vue';
 import WeightTraining from '../views/LogExerciseViews/WeightTraining.vue';
 
 //imports from model
-import { useSession } from '../model/session.ts';
+import { useSession } from '../model/session';
 
 
 const router = createRouter({

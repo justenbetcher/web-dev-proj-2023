@@ -53,6 +53,9 @@ export function newAccout(namePassed: string) {
 }
 
 export function lastWorkout() {
+    if (session.user == null) {
+        return;
+    }
     let days = (session.user.postHistory[session.user.postHistory.length - 1].date.valueOf()) - new Date().valueOf();
     return Math.abs(days);
 }
