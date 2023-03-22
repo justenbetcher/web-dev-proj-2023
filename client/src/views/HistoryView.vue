@@ -78,7 +78,9 @@ const isActive = ref(false);
     overflow: visible;
     margin-right: 15px;
     margin-bottom: 24px;
-    height: 500px;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
 }
 img {
     height: 250px;
@@ -98,6 +100,7 @@ p > small {
 }
 .comment {
     margin-left: 20px;
+    margin-bottom: 25px;
     
 }
 

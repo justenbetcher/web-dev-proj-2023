@@ -48,8 +48,8 @@ const feed = useFeed();
             <p><bold>Time:</bold> {{ post.exercise.time }} (min)</p>
             <p><bold>Comment:</bold></p>
             <p class="comment">{{ post.exercise.comment }}</p>
-            <br>
-            <p><small>{{ post.date }}</small></p>
+            
+            <p class="date"><small>{{ post.date }}</small></p>
         </div>
 
     </div>
@@ -72,6 +72,9 @@ h1 {
     width: 40%;
     margin-top: 12px;
     margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 ol{
     margin-left: 40px;
@@ -88,6 +91,11 @@ p > small {
 }
 .comment {
     margin-left: 20px;
+    margin-bottom: 25px;
+}
+.date {
+    position: absolute;
+    bottom: 7px;
 }
 
 </style>
