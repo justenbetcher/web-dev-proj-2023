@@ -1,8 +1,10 @@
 <script setup lang="ts">
     import {RouterLink, RouterView} from 'vue-router';
     import { useSession, login } from '../model/session';
+    import { ref } from 'vue';
 
     const session = useSession()
+    const isActive = ref(false);
 </script>
 
 <template>
@@ -14,7 +16,7 @@
                 <h2>Git Fit</h2>
             </a>
 
-            <div class="navbar-burger" data-target="navbarExampleTransparentExample">
+            <div class="navbar-burger" v-bind:class="{ 'is-active': isActive }" @click="isActive = !isActive">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -22,7 +24,7 @@
 
         </div>
     
-        <div id="navbarExampleTransparentExample" class="navbar-menu">
+        <div id="navbarExampleTransparentExample" class="navbar-menu" v-bind:class="{ 'is-active': isActive }">
             <div class="navbar-start">
 
                 <RouterLink to="/" class="navbar-item">Home</RouterLink>
@@ -34,24 +36,24 @@
                 <RouterLink to="/feed" class="navbar-item">Feed</RouterLink>
 
             </div>
-        </div>
+        
     
-        <div class="navbar-end">
-            <p class="navbar-item">{{ session.user.name }}</p>
-            <div class="navbar-item">
-                <div class="field is-grouped">
-                    <p class="control">
-                        <RouterLink to='/login' class="button is-primary" href="#" @click="session.user = null">
-                            <span class="icon">
-                                <i class="fas fa-right-from-bracket"></i>
-                            </span>
-                            <span>Log Out</span>
-                        </RouterLink>
-                    </p>
+            <div class="navbar-end">
+                <p class="navbar-item">{{ session.user.name }}</p>
+                <div class="navbar-item">
+                    <div class="field is-grouped">
+                        <p class="control">
+                            <RouterLink to='/login' class="button is-primary" href="#" @click="session.user = null">
+                                <span class="icon">
+                                    <i class="fas fa-right-from-bracket"></i>
+                                </span>
+                                <span>Log Out</span>
+                            </RouterLink>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-
     </nav>
 </template>
 
