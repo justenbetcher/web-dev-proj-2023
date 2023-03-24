@@ -97,5 +97,13 @@ p > small {
     position: absolute;
     bottom: 7px;
 }
+@media screen and (max-width: 1024px) {
+    .box {
+        min-width: 350px
+    }
+    .comment {
+        margin-bottom: 50px;
+    }
+}
 
 </style>

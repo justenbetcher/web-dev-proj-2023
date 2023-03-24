@@ -9,8 +9,13 @@ const isActive = ref(false);
 </script>
 
 <template>
-
+<div class="container">
     <h1 class="title">Your past Workouts</h1>
+    <div class="edit-button">
+        <button class="button is-transparent edit" @click="isActive = !isActive">
+            <span>edit</span>
+        </button>
+    </div>
 
     <div class="columns" v-if="session.user != null">
         <div class="box" v-for="post, i in session.user.postHistory.slice().reverse()">
@@ -57,9 +62,8 @@ const isActive = ref(false);
         </div>
     </div>
 
-    <button class="button is-transparent edit" @click="isActive = !isActive">
-        <span>edit</span>
-    </button>
+    
+</div>
     
 </template>
 
@@ -72,13 +76,15 @@ const isActive = ref(false);
     justify-content: left;
     align-items: center;
 }
+h1 {
+    text-align: center;
+}
 .box{
     width: 30%;
     position: relative;
     overflow: visible;
     margin-right: 15px;
     margin-bottom: 24px;
-    min-height: 500px;
     display: flex;
     flex-direction: column;
 }
@@ -116,7 +122,7 @@ button.is-danger {
 .button.is-danger.is-active {
     display: block;
 }
-.button.edit {
+.edit-button {
     position: absolute;
     top: 0;
     right: 0;
@@ -124,6 +130,37 @@ button.is-danger {
 .date {
     position: absolute;
     bottom: 7px;
+}
+@media screen and (max-width: 1024px) {
+    .box {
+        min-width: 350px;
+        margin: 15px;
+    }
+    .container {
+        margin: 15px;
+    }
+}
+
+@media screen and (max-width: 512px) {
+    .columns {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .edit-button {
+        position:static;
+        display: flex;
+        justify-content: right;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
 }
 
 </style>

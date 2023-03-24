@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router';
 import LogExerciseView from '../LogExerciseView.vue';
 import { useExercises, resetExercise } from '@/model/exercise';
 import { makePost } from '@/model/post';
@@ -25,7 +26,7 @@ import { makePost } from '@/model/post';
 <template>
     <LogExerciseView />
 
-        <div class="box" v-if="workout.exercise != null">
+        <div id="down" class="box" v-if="workout.exercise != null">
             <h1 class="title">Log Your Run!</h1>
 
             <p class="field">Distance</p>
