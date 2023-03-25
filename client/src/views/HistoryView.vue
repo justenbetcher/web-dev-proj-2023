@@ -83,6 +83,7 @@ h1 {
     width: 30%;
     position: relative;
     overflow: visible;
+    min-height: 525px;
     margin-right: 15px;
     margin-bottom: 24px;
     display: flex;

@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { useFeed } from '@/model/post';
+import { ref } from 'vue';
 
 
 
 const feed = useFeed();
+const isMore = ref(false);
 
 
 </script>
@@ -18,36 +20,87 @@ const feed = useFeed();
             <div v-if="post.exercise.name == 'Swim'">
                 <p class="post-name"><bolder>{{ post.user }}</bolder> went for a swim today!</p>
                 <img src="../assets/img/LogExerciseImg/swim.jpeg">
-                <p><bold>PoolSize:</bold> {{ post.exercise.poolSize }} (meters)</p>
-                <p><bold>Laps:</bold> {{ post.exercise.laps }}</p>
-                <p><bold>Stroke:</bold> {{ post.exercise.stroke }}</p>
+                <div class="info" v-bind:class="{ more: isMore }">
+                    <p><bold>PoolSize:</bold> {{ post.exercise.poolSize }} (meters)</p>
+                    <p><bold>Laps:</bold> {{ post.exercise.laps }}</p>
+                    <p><bold>Stroke:</bold> {{ post.exercise.stroke }}</p>
+                    <p><bold>Time:</bold> {{ post.exercise.time }} (min)</p>
+                    <p><bold>Comment:</bold></p>
+                    <p class="comment">{{ post.exercise.comment }}</p>
+
+                    <button class="button is-dark need-more" v-bind:class="{ more : isMore }" @click="isMore = !isMore">
+                        <span>... more</span>
+                    </button>
+                    
+                    <button class="button is-dark need-less" v-if="isMore == true" @click="isMore = !isMore">
+                        <span>... less</span>
+                    </button>
+                </div>
             </div>
 
             <div v-else-if="post.exercise.name == 'Walk'">
                 <p class="post-user"><bolder>{{ post.user }}</bolder> went for a walk today!</p>
                 <img src="../assets/img/LogExerciseImg/walk.jpeg">
-                <p><bold>Unit:</bold> {{ post.exercise.unit }}</p>
-                <p><bold>Distance:</bold> {{ post.exercise.distance }}</p>
+                <div class="info" v-bind:class="{ more: isMore }">
+                    <p><bold>Unit:</bold> {{ post.exercise.unit }}</p>
+                    <p><bold>Distance:</bold> {{ post.exercise.distance }}</p>
+                    <p><bold>Time:</bold> {{ post.exercise.time }} (min)</p>
+                    <p><bold>Comment:</bold></p>
+                    <p class="comment">{{ post.exercise.comment }}</p>
+
+                    <button class="button is-dark need-more" v-bind:class="{ more : isMore }" @click="isMore = !isMore">
+                        <span>... more</span>
+                    </button>
+                    
+                    <button class="button is-dark need-less" v-if="isMore == true" @click="isMore = !isMore">
+                        <span>... less</span>
+                    </button>
+                </div>
             </div>
 
             <div v-else-if="post.exercise.name == 'Run'">
                 <p class="post-user"><bolder>{{ post.user }}</bolder> went for a run today!</p>
                 <img src="../assets/img/LogExerciseImg/run.jpeg">
-                <p><bold>Unit:</bold> {{ post.exercise.unit }}</p>
-                <p><bold>Distance:</bold> {{ post.exercise.distance }}</p>
+                <div class="info" v-bind:class="{ more: isMore }">
+                    <p><bold>Unit:</bold> {{ post.exercise.unit }}</p>
+                    <p><bold>Distance:</bold> {{ post.exercise.distance }}</p>
+                    <p><bold>Time:</bold> {{ post.exercise.time }} (min)</p>
+                    <p><bold>Comment:</bold></p>
+                    <p class="comment">{{ post.exercise.comment }}</p>
+
+                    <button class="button is-dark need-more" v-bind:class="{ more : isMore }" @click="isMore = !isMore">
+                        <span>... more</span>
+                    </button>
+                    
+                    <button class="button is-dark need-less" v-if="isMore == true" @click="isMore = !isMore">
+                        <span>... less</span>
+                    </button>
+                </div>
             </div>
 
             <div v-else>
                 <p class="post-user"><bolder>{{ post.user }}</bolder> went to the gym today!</p>
                 <img src="../assets/img/LogExerciseImg/weight-training.jpeg">
-                <p><bold>Exercises/ Movments</bold></p>
-                <ol>
-                        <li v-for="movment in post.exercise.circuitArray">{{ movment }}</li>
-                </ol>
+                <div class="info" v-bind:class="{ more : isMore }">
+                    <p><bold>Exercises/ Movments</bold></p>
+                    <ol>
+                            <li v-for="movment in post.exercise.circuitArray">{{ movment }}</li>
+                    </ol>
+                    <p><bold>Time:</bold> {{ post.exercise.time }} (min)</p>
+                    <p><bold>Comment:</bold></p>
+                    <p class="comment">{{ post.exercise.comment }}</p>
+
+                    <button class="button is-dark need-more" v-bind:class="{ more : isMore }" @click="isMore = !isMore">
+                        <span>... more</span>
+                    </button>
+
+                    <button class="button is-dark need-less" v-if="isMore == true" @click="isMore = !isMore">
+                        <span>... less</span>
+                    </button>
+                    
+                </div>
             </div>
-            <p><bold>Time:</bold> {{ post.exercise.time }} (min)</p>
-            <p><bold>Comment:</bold></p>
-            <p class="comment">{{ post.exercise.comment }}</p>
+            
             
             <p class="date"><small>{{ post.date }}</small></p>
         </div>
@@ -91,7 +144,7 @@ p > small {
 }
 .comment {
     margin-left: 20px;
-    margin-bottom: 25px;
+    margin-bottom: 35px;
 }
 .date {
     position: absolute;
@@ -101,9 +154,34 @@ p > small {
     .box {
         min-width: 350px
     }
-    .comment {
-        margin-bottom: 50px;
-    }
+    
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: hidden;
+    overflow-x: wrap;
+    background-image: linear-gradient(white, white, white, white, white, rgba(0, 0, 0, 0.196));
+    position: relative;
+    margin-bottom: 15px;
+}
+.button.need-more, button.need-less {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    height: 25px;
+    font-size: .85em;
+}
+
+.button.more{
+    display: none;
+}
+
+.info.more{
+    max-height: none;
+    background-image: none;
 }
 
 </style>

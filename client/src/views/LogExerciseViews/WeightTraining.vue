@@ -31,9 +31,9 @@ import { ref } from 'vue';
         </div>
 
         <div class="field">
-            <button class="button is-success submit" @click="enterCircuit(movments); makePost(workout.exercise); movments = ''">
+            <RouterLink to="/feed" class="button is-success submit" @click="enterCircuit(movments); makePost(workout.exercise); movments = ''">
                 <span>Post Your Workout</span>
-            </button>
+            </RouterLink>
         </div>
     </div>
 

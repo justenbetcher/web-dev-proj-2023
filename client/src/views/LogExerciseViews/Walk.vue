@@ -58,9 +58,9 @@ import { makePost } from '@/model/post';
         </div>
 
         <div class="field">
-            <button class="button is-success submit" @click="makePost(workout.exercise)">
+            <RouterLink to="/feed" class="button is-success submit" @click="makePost(workout.exercise)">
                 <span>Post Your Workout</span>
-            </button>
+            </RouterLink>
         </div>
 
         <div>
