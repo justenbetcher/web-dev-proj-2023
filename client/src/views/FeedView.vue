@@ -165,7 +165,7 @@ p > small {
     overflow-x: wrap;
     background-image: linear-gradient(white, white, white, white, white, rgba(0, 0, 0, 0.196));
     position: relative;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 .button.need-more, button.need-less {
     position: absolute;
