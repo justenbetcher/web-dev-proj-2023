@@ -34,6 +34,9 @@ export function login() {
 */
 
 export function login(id: number) {
+    session.user = userArray.find(x => x.id == id) ?? null;
+
+    /*
     for (let i = 0; i < userArray.length; i++) {
         if (userArray[i].id == id)
         {
@@ -41,6 +44,7 @@ export function login(id: number) {
             break;
         }
     }
+    */
 
 }
 

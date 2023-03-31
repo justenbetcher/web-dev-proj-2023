@@ -82,3 +82,8 @@ const paper = SchoolBooks;
 
 console.log('hello')
 console.log(typeof books == typeof SchoolBooks);
+
+let st = 'this-is-a-test';
+let stArray = [];
+stArray = st.split('-');
+console.log(stArray);
