@@ -1,8 +1,7 @@
 import { reactive } from 'vue'
 import type { Post } from './post'
 
-const session = reactive({      //reactive cannot be assigend to a new object, by making a variable user
-                                
+const session = reactive({      //reactive cannot be assigend to a new object, by making a variable user                  
     user: null as User | null,
 })
 

@@ -1,0 +1,29 @@
+{
+    "users": [
+        {
+            "id": 0,
+            "name": "John Doe",
+            "email": "johndoe01@email.com",
+            "photo": "photo.jpeg",
+            "token": "1234",
+            "postHistory": [
+                {
+                    "user": "John Doe",
+                    "exercise": {
+                        "name": "Swim",
+                        "unit": "Kilometers",
+                        "distance": 0,
+                        "time": 0,
+                        "poolSize": 0,
+                        "laps": 0,
+                        "stroke": "!!!TEST!!!",
+                        "comment": "being sent from the server",
+                        "circuitArray": []
+                    },
+                    "date": 0,
+                    "postID": "John Doe0"
+                }
+            ]
+        }
+    ]
+}
