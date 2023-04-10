@@ -1,8 +1,15 @@
 import { reactive } from 'vue'
-import type { Post } from './post'
+import { useRouter } from 'vue-router';
+import * as myFetch from './myFetch';
+import type { Post } from './post';
 
 const session = reactive({      //reactive cannot be assigend to a new object, by making a variable user                  
     user: null as User | null,
+    isloading: false,
+    messages: [] as {
+        msg: string,
+        type: "success" | "danger" | "warning" | "info",
+    }[]
 })
 
 const userArray = reactive([] as User[]);
@@ -21,6 +28,21 @@ export function useSession() {
 }
 export function useUserArray() {
     return userArray;
+}
+
+export function api(url: string, data?: any, method?: string, headers?: any) {
+    session.isloading = true;
+    return myFetch.api(url, data, method, headers)
+        .catch(err => {
+            console.error({err});
+            session.messages.push({
+                msg: err.message ?? JSON.stringify(err),
+                type: "danger",
+            })
+        })
+        .finally(() => {
+            session.isloading = false;
+        })
 }
 
 /*
