@@ -9,18 +9,18 @@ function getUserById(id) {
 }
 
 function addUser(user) {
-    user.id = data.users.length;
-    data.products.push(user);
+    user.id = user.name.replace(/\s/g, "").toLowerCase() + data.users.length;
+    data.user.push(user);
 }
 
 function updateUser(user) {
-    const index = data.products.findIndex(u => u.id === user.id);
+    const index = data.users.findIndex(u => u.id === user.id);
     data.users[index] = user;
 }
 
 function deleteUser(id) {
     const index = data.users.findIndex(u => u.id === id);
-    data.products.splice(index, 1);
+    data.users.splice(index, 1);
 }
 
 function searchUser(name) {
