@@ -33,7 +33,7 @@ app.get('*', (req, res) => {
 
 // Error handling
 app
-    .use((err, req, res, next) => {
+    .use((err, req, res, next) => { // req is REQUEST and res is RESPONS
         console.error(err);
         const msg = {
             status: err.code || 500,

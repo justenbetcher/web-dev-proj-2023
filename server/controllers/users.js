@@ -41,7 +41,7 @@ router
     .patch('/:id', (req, res) => {
         const user = req.body;
         model.updateUser(user);
-        const data = { data: product, isSuccess: true };
+        const data = { data: user, isSuccess: true };
         res.send(data)
     })
 

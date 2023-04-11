@@ -10,7 +10,7 @@ function getUserById(id) {
 
 function addUser(user) {
     user.id = user.name.replace(/\s/g, "").toLowerCase() + data.users.length;
-    data.user.push(user);
+    data.users.push(user);
 }
 
 function updateUser(user) {

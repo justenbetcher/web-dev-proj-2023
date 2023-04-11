@@ -1,29 +1,33 @@
 {
     "users": [
         {
-            "id": 0,
+            "id": "johndoe0",
             "name": "John Doe",
-            "email": "johndoe01@email.com",
-            "photo": "photo.jpeg",
-            "token": "1234",
+            "email": "johndoe@email.com",
+            "password": "1234",
             "postHistory": [
                 {
                     "user": "John Doe",
                     "exercise": {
-                        "name": "Swim",
+                        "workoutType": "Swim",
                         "unit": "Kilometers",
+                        "poolSize": 25,
                         "distance": 0,
-                        "time": 0,
-                        "poolSize": 0,
-                        "laps": 0,
-                        "stroke": "!!!TEST!!!",
-                        "comment": "being sent from the server",
-                        "circuitArray": []
+                        "laps": 6,
+                        "time": 120,
+                        "stroke": "TEST",
+                        "circuitArray": [
+                            "this",
+                            "is",
+                            "a",
+                            "test"
+                        ],
+                        "comment": "this is a test"
                     },
                     "date": 0,
-                    "postID": "John Doe0"
+                    "postID": "johndoe0000"
                 }
             ]
-        }
+        }  
     ]
 }

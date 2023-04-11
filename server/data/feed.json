@@ -1,0 +1,25 @@
+{
+    "feed": [
+        {
+            "users": "John Doe",
+            "exercise": {
+                "workoutType": "Swim",
+                "unit": "Kilometers",
+                "poolSize": 25,
+                "distance": 0,
+                "laps": 6,
+                "time": 120,
+                "stroke": "TEST",
+                "circuitArray": [
+                    "this",
+                    "is",
+                    "a",
+                    "test"
+                ],
+                "comment": "this is a test"
+            },
+            "date": 0,
+            "postID": "johndoe0000"
+        }
+    ]
+}
