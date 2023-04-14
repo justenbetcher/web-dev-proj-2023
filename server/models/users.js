@@ -4,13 +4,19 @@ function getUsers() {
     return data.users;
 }
 
-function getUserById(id) {
+function getUserByID(id) {
     return data.users.find(user => user.id === id);
 }
 
 function addUser(user) {
-    user.id = user.name.replace(/\s/g, "").toLowerCase() + data.users.length;
+    let date =  new Date().valueOf();
+    user.id = user.name.replace(/\s/g, "").toLowerCase() + date;
     data.users.push(user);
+}
+
+function updateUserHistory(post) {
+    const index = data.users.findIndex(u => u.userId === post.userId);
+    data.users[index].postHistory.push(post);
 }
 
 function updateUser(user) {
@@ -23,15 +29,12 @@ function deleteUser(id) {
     data.users.splice(index, 1);
 }
 
-function searchUser(name) {
-    return data.users.filter(user => user.name.toLowerCase().includes(name.toLowerCase()));
-}
 
 module.exports = {
     getUsers,
-    getUserById,
+    getUserByID,
     addUser,
+    updateUserHistory,
     updateUser,
     deleteUser,
-    searchUser
 };

@@ -1,5 +1,6 @@
 import { ref } from 'vue';
-import { useSession } from './session';
+import type { DataEnvelope } from './myFetch';
+import { useSession, api } from './session';
 import { resetExercise, type Exercise } from './exercise';
 
 const exerciseFeed = ref([] as Post[]);
@@ -16,9 +17,11 @@ export interface Post {
     user: string;
     exercise: Exercise;
     date: Date;
-    postID: string;
+    postId: string;
+    userId: string;
 }
 
+/*
 export function makePost(exercisePassed: Exercise | null) { 
     if (exercisePassed == null || session.user == null) {
         return;
@@ -28,27 +31,43 @@ export function makePost(exercisePassed: Exercise | null) {
         user: session.user.name,
         exercise: exercisePassed,
         date: new Date(),
-        postID: session.user.name + date,
+        postId: session.user.name + date,
+        userId: session.user.userId,
     });
 
     session.user.postHistory.push({
         user: session.user.name,
         exercise: exercisePassed,
         date: new Date(),
-        postID: session.user.name + date,
+        postId: session.user.name + date,
+        userId: session.user.userId,
     });
 
     resetExercise('');
 }
+*/
+
+export function makePost(currentExercise: Exercise) : Promise<DataEnvelope<Post>> {
+    let currentDate = new Date();
+    return api(`users/post/${session.user.userId}`, {
+        user: session.user?.name,
+        exercise: currentExercise,
+        date: currentDate,
+        postId: session.user.name + currentDate,
+        userId: session.user?.userId,
+    });
+}
+
+
 
 export function deletePost(index: number) {
     if (session.user == null) {
         return;
     }
-    const ID = session.user.postHistory[index].postID;
+    const ID = session.user.postHistory[index].postId;
 
     for(let i = 0; i < exerciseFeed.value.length; i++) {
-        if ( session.user.postHistory[index].postID == exerciseFeed.value[i].postID) {
+        if ( session.user.postHistory[index].postId == exerciseFeed.value[i].postId) {
             exerciseFeed.value.splice(i, 1);
             break;
         }

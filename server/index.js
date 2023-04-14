@@ -19,12 +19,11 @@ app
         next()
     })
 
-    // Actions
+// Actions
 app
-    .get('/api/v1/', (req, res) => {
-        res.send('Hello World! From Express')
-    })
+    
     .use('/api/v1/users', users)
+    .use('/api/v1/history', users)
 
 // Catch all
 app.get('*', (req, res) => {

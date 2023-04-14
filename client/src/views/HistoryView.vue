@@ -18,9 +18,9 @@ const isActive = ref(false);
     </div>
 
     <div class="columns" v-if="session.user != null">
-        <div class="box" v-for="post, i in session.user.postHistory.slice().reverse()">
+        <div class="box" v-for="post, i in session.user.postHistory?.slice().reverse()">
 
-            <div v-if="post.exercise.name == 'Swim'">
+            <div v-if="post.exercise.workoutType == 'Swim'">
                 <p class="post-name"><bolder>{{ post.user }}</bolder> went for a swim today!</p>
                 <img src="../assets/img/LogExerciseImg/swim.jpeg">
                 <p><bold>PoolSize:</bold> {{ post.exercise.poolSize }} (meters)</p>
@@ -28,14 +28,14 @@ const isActive = ref(false);
                 <p><bold>Stroke:</bold> {{ post.exercise.stroke }}</p>
             </div>
 
-            <div v-else-if="post.exercise.name == 'Walk'">
+            <div v-else-if="post.exercise.workoutType == 'Walk'">
                 <p class="post-user"><bolder>{{ post.user }}</bolder> went for a walk today!</p>
                 <img src="../assets/img/LogExerciseImg/walk.jpeg">
                 <p><bold>Unit:</bold> {{ post.exercise.unit }}</p>
                 <p><bold>Distance:</bold> {{ post.exercise.distance }}</p>
             </div>
 
-            <div v-else-if="post.exercise.name == 'Run'">
+            <div v-else-if="post.exercise.workoutType == 'Run'">
                 <p class="post-user"><bolder>{{ post.user }}</bolder> went for a run today!</p>
                 <img src="../assets/img/LogExerciseImg/run.jpeg">
                 <p><bold>Unit:</bold> {{ post.exercise.unit }}</p>

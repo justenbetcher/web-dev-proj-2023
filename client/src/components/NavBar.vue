@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import {RouterLink, RouterView} from 'vue-router';
-    import { useSession, login } from '../model/session';
+    import { useSession } from '../model/session';
     import { ref } from 'vue';
 
     const session = useSession()

@@ -1,8 +1,7 @@
 {
-    "feed": [
+    "posts": [
         {
-            "userId": "johndoe0",
-            "user": "John Doe",
+            "users": "John Doe",
             "exercise": {
                 "workoutType": "Swim",
                 "unit": "Kilometers",

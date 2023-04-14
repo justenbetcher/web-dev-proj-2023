@@ -1,7 +1,7 @@
 {
     "users": [
         {
-            "userId": "johndoe0",
+            "id": "johndoe0",
             "name": "John Doe",
             "email": "johndoe@email.com",
             "password": "1234",

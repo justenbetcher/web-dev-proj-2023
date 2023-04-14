@@ -7,7 +7,7 @@ const Workout = ref({
 
 
 export interface Exercise {
-    name: string;
+    workoutType: string;
     unit?: string;
     poolSize?: number;
     distance?: number;
@@ -22,9 +22,9 @@ export function useExercises() {
     return Workout;
 }
 
-export function resetExercise(workoutType: string){
+export function resetExercise(workout: string){
     Workout.value.exercise = {
-        name: workoutType,
+        workoutType: workout,
         unit: '',
         distance: 0,
         time: 0,

@@ -1,11 +1,17 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
-import { login, useUserArray, newAccout } from '../model/session';
 import { ref } from 'vue';
+import { RouterLink } from 'vue-router';
+import { type User, getUsers, useLogin, useSession} from '../model/session';
 
-const userArray = useUserArray();
+
 const isActive = ref(false);
 
+const users = ref<User[]>([]);
+getUsers().then((data) => {
+    users.value = data.data;
+})
+
+const session = useSession();
 
 </script>
 
@@ -42,7 +48,7 @@ const isActive = ref(false);
         </div>
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
             <div class="dropdown-content">
-                <RouterLink to='/' href="#" class="dropdown-item" v-for="user, i in userArray" @click="login(i)">
+                <RouterLink to="/" href="#" class="dropdown-item" v-for="user, i in users" @click="session.user = user">
                     {{ user.name }}
                 </RouterLink>
             </div>

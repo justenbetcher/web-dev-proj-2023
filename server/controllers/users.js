@@ -10,18 +10,20 @@ router
         res.send(data)
     })
 
-    .get('/search/:q', (req, res) => {
-        const name = req.params.q;
-        console.log({ name });
-        const list = model.searchUser(name);
-        const data = { data: list, total: list.length, isSuccess: true };
+    
+
+    .get('/:id', (req, res) => {
+        const id = req.params.id;
+        const user = model.getUserByID();
+        const data = { data: user, isSuccess: true };
         res.send(data)
     })
 
     .get('/:id', (req, res) => {
-        const id = +req.params.id;
-        const user = model.getUserById(id);
-        const data = { data: user, isSuccess: true };
+        const id = req.params.id;
+        const user = model.getUserByID();
+        const postList = user.postHistory;
+        const data = { data: postList, total: postList.length, isSuccess: true };
         res.send(data)
     })
 
@@ -38,15 +40,16 @@ router
         res.send(data)
     })
 
-    .patch('/:id', (req, res) => {
-        const user = req.body;
-        model.updateUser(user);
-        const data = { data: user, isSuccess: true };
+
+    .post('/post/:id', (req, res) => {
+        const post = req.body;
+        model.updateUserHistory(post);
+        const data = { data: post, isSuccess: true };
         res.send(data)
     })
 
     .delete('/:id', (req, res) => {
-        const id = +req.params.id;
+        const id = req.params.id;
         model.deleteUser(id);
         const data = { data: id, isSuccess: true };
         res.send(data)

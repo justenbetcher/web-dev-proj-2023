@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { newAccout } from '../model/session';
 import { ref } from 'vue';
 
 
@@ -40,7 +39,7 @@ const name = ref('');
     </div>
 
     <div class="field">
-        <RouterLink to='/login' class="button is-success submit" @click="newAccout(name)">
+        <RouterLink to='/login' class="button is-success submit" >
             <span>Create Account</span>
         </RouterLink>
     </div>
