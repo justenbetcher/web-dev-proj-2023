@@ -1,10 +1,16 @@
 <script setup lang="ts">
-import { deletePost } from '@/model/post';
-import { useSession } from '../model/session';
+import type { Post, deletePost } from '@/model/post';
+import { useSession, getUsers } from '../model/session';
 import { ref } from 'vue';
 
 const session = useSession();
 const isActive = ref(false);
+
+const history = ref<Post[]>([]);
+getUsers().then((data) => {
+    const index = data.data.findIndex(user => user.userId === session.user?.userId);
+    history.value = data.data[index].postHistory ?? {} as Post[];
+})
 
 </script>
 
@@ -18,7 +24,7 @@ const isActive = ref(false);
     </div>
 
     <div class="columns" v-if="session.user != null">
-        <div class="box" v-for="post, i in session.user.postHistory?.slice().reverse()">
+        <div class="box" v-for="post, i in history.slice().reverse()">
 
             <div v-if="post.exercise.workoutType == 'Swim'">
                 <p class="post-name"><bolder>{{ post.user }}</bolder> went for a swim today!</p>
