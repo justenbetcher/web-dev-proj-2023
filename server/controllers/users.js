@@ -43,7 +43,7 @@ router
 
     .post('/post/:id', (req, res) => {
         const post = req.body;
-        model.updateUserHistory(post);
+        model.makePost(post);
         const data = { data: post, isSuccess: true };
         res.send(data)
     })

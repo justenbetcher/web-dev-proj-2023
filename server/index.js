@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const users = require('./controllers/users');
+const feed = require('./controllers/feed');
 
 const app = express();
 
@@ -23,6 +24,7 @@ app
 app
     
     .use('/api/v1/users', users)
+    .use('/api/v1/feed', feed)
     .use('/api/v1/history', users)
 
 // Catch all

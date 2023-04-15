@@ -1,4 +1,5 @@
 const data = require('../data/users.json');
+const feedData = require('../data/feed.json');
 
 function getUsers() {
     return data.users;
@@ -14,9 +15,10 @@ function addUser(user) {
     data.users.push(user);
 }
 
-function updateUserHistory(post) {
+function makePost(post) {
     const index = data.users.findIndex(u => u.userId === post.userId);
     data.users[index].postHistory.push(post);
+    feedData.feed.push(post);
 }
 
 function updateUser(user) {
@@ -34,7 +36,7 @@ module.exports = {
     getUsers,
     getUserByID,
     addUser,
-    updateUserHistory,
+    makePost,
     updateUser,
     deleteUser,
 };

@@ -1,7 +1,7 @@
 import { ref } from 'vue';
-import type { DataEnvelope } from './myFetch';
+import type { DataEnvelope, DataListEnvelope } from './myFetch';
 import { useSession, api } from './session';
-import { resetExercise, type Exercise } from './exercise';
+import type { Exercise } from './exercise';
 
 const exerciseFeed = ref([] as Post[]);
 
@@ -49,13 +49,17 @@ export function makePost(exercisePassed: Exercise | null) {
 
 export function makePost(currentExercise: Exercise) : Promise<DataEnvelope<Post>> {
     let currentDate = new Date();
-    return api(`users/post/${session.user.userId}`, {
+    return api(`users/post/${session.user?.userId}`, {
         user: session.user?.name,
         exercise: currentExercise,
         date: currentDate,
-        postId: session.user.name + currentDate,
+        postId: (session.user?.name ?? 'undefined')+ currentDate,
         userId: session.user?.userId,
     });
+}
+
+export function getFeed() : Promise<DataListEnvelope<Post>> {
+    return api('feed');
 }
 
 

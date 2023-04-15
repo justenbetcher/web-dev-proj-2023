@@ -1,10 +1,14 @@
 <script setup lang="ts">
-import { useFeed } from '@/model/post';
+import { getFeed, type Post, type useFeed } from '@/model/post';
 import { ref } from 'vue';
 
 
 
-const feed = useFeed();
+const feed = ref<Post[]>([]);
+getFeed().then((data) => {
+    feed.value = data.data;
+})
+
 const isMore = ref(false);
 
 
@@ -17,7 +21,7 @@ const isMore = ref(false);
 
         <div class="box" v-for="post, i in feed">
             
-            <div v-if="post.exercise.name == 'Swim'">
+            <div v-if="post.exercise.workoutType == 'Swim'">
                 <p class="post-name"><bolder>{{ post.user }}</bolder> went for a swim today!</p>
                 <img src="../assets/img/LogExerciseImg/swim.jpeg">
                 <div class="info" v-bind:class="{ more: isMore }">
@@ -38,7 +42,7 @@ const isMore = ref(false);
                 </div>
             </div>
 
-            <div v-else-if="post.exercise.name == 'Walk'">
+            <div v-else-if="post.exercise.workoutType == 'Walk'">
                 <p class="post-user"><bolder>{{ post.user }}</bolder> went for a walk today!</p>
                 <img src="../assets/img/LogExerciseImg/walk.jpeg">
                 <div class="info" v-bind:class="{ more: isMore }">
@@ -58,7 +62,7 @@ const isMore = ref(false);
                 </div>
             </div>
 
-            <div v-else-if="post.exercise.name == 'Run'">
+            <div v-else-if="post.exercise.workoutType == 'Run'">
                 <p class="post-user"><bolder>{{ post.user }}</bolder> went for a run today!</p>
                 <img src="../assets/img/LogExerciseImg/run.jpeg">
                 <div class="info" v-bind:class="{ more: isMore }">
