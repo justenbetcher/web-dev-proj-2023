@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import SwimPost from '../components/SwimPost.vue'
 import { getFeed, type Post, type useFeed } from '@/model/post';
 import { ref } from 'vue';
 
@@ -17,29 +18,19 @@ const isMore = ref(false);
 <template>
     <h1 class="title">Feed Your Motivatoin</h1>
     <div class="container">
-        
-
-        <div class="box" v-for="post, i in feed">
+        <div class="contain-posts" v-for="post, i in feed">
             
-            <div v-if="post.exercise.workoutType == 'Swim'">
-                <p class="post-name"><bolder>{{ post.user }}</bolder> went for a swim today!</p>
-                <img src="../assets/img/LogExerciseImg/swim.jpeg">
-                <div class="info" v-bind:class="{ more: isMore }">
-                    <p><bold>PoolSize:</bold> {{ post.exercise.poolSize }} (meters)</p>
-                    <p><bold>Laps:</bold> {{ post.exercise.laps }}</p>
-                    <p><bold>Stroke:</bold> {{ post.exercise.stroke }}</p>
-                    <p><bold>Time:</bold> {{ post.exercise.time }} (min)</p>
-                    <p><bold>Comment:</bold></p>
-                    <p class="comment">{{ post.exercise.comment }}</p>
-
-                    <button class="button is-dark need-more" v-bind:class="{ more : isMore }" @click="isMore = !isMore">
-                        <span>... more</span>
-                    </button>
-                    
-                    <button class="button is-dark need-less" v-if="isMore == true" @click="isMore = !isMore">
-                        <span>... less</span>
-                    </button>
-                </div>
+            <div class="post" v-if="post.exercise.workoutType == 'Swim'">
+                
+                <SwimPost>
+                    <template #user>{{ post.user }}</template>
+                    <template #poolSize>{{ post.exercise.poolSize }}</template>
+                    <template #laps>{{ post.exercise.laps }}</template>
+                    <template #time>{{ post.exercise.time }}</template>
+                    <template #comment>{{ post.exercise.comment }}</template>
+                    <template #date>{{ post.date }}</template>
+                </SwimPost>
+                
             </div>
 
             <div v-else-if="post.exercise.workoutType == 'Walk'">
@@ -108,22 +99,27 @@ const isMore = ref(false);
             
             <p class="date"><small>{{ post.date }}</small></p>
         </div>
-
     </div>
 </template>
 
 
 
 <style scoped>
-h1 {
-    text-align: center;
-}
+
 .container{
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
-
+}
+.contain-posts{
+    width: fit-content;
+}
+.post {
+    width: 400px;
+}
+h1 {
+    text-align: center;
 }
 .box{
     width: 40%;
@@ -187,5 +183,6 @@ p > small {
     max-height: none;
     background-image: none;
 }
+
 
 </style>
