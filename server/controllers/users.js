@@ -19,12 +19,18 @@ router
         res.send(data)
     })
 
-    .get('/:id', (req, res) => {
+    .get('/history/:id', (req, res) => {
         const id = req.params.id;
         const user = model.getUserByID();
         const postList = user.postHistory;
         const data = { data: postList, total: postList.length, isSuccess: true };
         res.send(data)
+    })
+
+    .patch('/', (req, res) => {
+        const updatedUser = model.updateUser(req.body);
+        const data = { data: updatedUser, isSuccess: true }
+        res.send(data);
     })
 
     .post('/', (req, res) => {
@@ -37,14 +43,6 @@ router
 
         model.addUser(user);
         const data = { data: user, isSuccess: true };
-        res.send(data)
-    })
-
-
-    .post('/post/:id', (req, res) => {
-        const post = req.body;
-        model.makePost(post);
-        const data = { data: post, isSuccess: true };
         res.send(data)
     })
 

@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const users = require('./controllers/users');
 const feed = require('./controllers/feed');
+const post = require('./controllers/post');
 
 const app = express();
 
@@ -25,8 +26,7 @@ app
     
     .use('/api/v1/users', users)
     .use('/api/v1/feed', feed)
-    .use('/api/v1/history', users)
-
+    .use('/api/v1/post', post)
 // Catch all
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/dist/index.html'))
