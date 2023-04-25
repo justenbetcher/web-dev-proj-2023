@@ -1,9 +1,9 @@
 
 ###
-GET http://localhost:3001/api/v1/users
+GET http://localhost:3070/api/v1/users
 
 ###
-PATCH http://localhost:3001/api/v1/users
+PATCH http://localhost:3070/api/v1/users
 Content-Type: application/json
 some-other-header: with my very personal information
 
