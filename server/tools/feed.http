@@ -1,0 +1,8 @@
+###
+GET http://localhost:3070/api/v1/feed
+
+###
+DELETE http://localhost:3070/api/v1/feed/64488d7db42a2b36545660e2 
+
+
+

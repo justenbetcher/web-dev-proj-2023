@@ -4,53 +4,63 @@ const model = require('../models/users');
 const router = express.Router();
 
 router
-    .get('/', (req, res) => {
-        const list = model.getUsers();
-        const data = { data: list, total: list.length, isSuccess: true };
-        res.send(data)
+    .get('/', (req, res, next) => {
+        model.getUsers(+req.query.page, +req.query.pageSize)
+            .then(holder => {
+                const data = { data: holder.users, total: holder.total, isSuccess: true };
+                res.send(data);
+            })
+            .catch(next);
     })
 
     
 
-    .get('/:id', (req, res) => {
-        const id = req.params.id;
-        const user = model.getUserByID();
-        const data = { data: user, isSuccess: true };
-        res.send(data)
+    .get('/:id', (req, res, next) => {
+        model.getUserById(req.params.id)
+        .then(user => {
+            const data = { data: user, isSuccess: true };
+            res.send(data);
+        })
+        .catch(next);
     })
 
-    .get('/history/:id', (req, res) => {
-        const id = req.params.id;
-        const user = model.getUserByID();
-        const postList = user.postHistory;
-        const data = { data: postList, total: postList.length, isSuccess: true };
-        res.send(data)
+    .get('/history/:id', (req, res, next) => {
+        model.getUserById(req.params.id)
+        .then(user => {
+            const data = { data: user.postHistory ?? [], total: user.postHistory.length ?? 0, isSuccess: true  };
+            res.send(data);
+        })
+        .catch(next);
     })
 
-    .patch('/', (req, res) => {
-        const updatedUser = model.updateUser(req.body);
-        const data = { data: updatedUser, isSuccess: true }
-        res.send(data);
+    
+    .patch('/:id', (req, res, next) => {
+        model.updateUser(req.params.id, req.body)
+        .then(x => {
+            const data = { data: x, isSuccess: true };
+            res.send(data);
+        })
+        .catch(next);
+    })
+    
+
+    .post('/', (req, res, next) => {
+        model.addUser(req.body)
+        .then(user => {
+            const data = { data: user, isSuccess: true };
+            res.send(data);
+        })
+        .catch(next)
+        
     })
 
-    .post('/', (req, res) => {
-        const user = req.body;
-
-        console.log({ user });
-        console.log( req.query );
-        console.log( req.params );
-        console.log( req.headers );
-
-        model.addUser(user);
-        const data = { data: user, isSuccess: true };
-        res.send(data)
-    })
-
-    .delete('/:id', (req, res) => {
-        const id = req.params.id;
-        model.deleteUser(id);
-        const data = { data: id, isSuccess: true };
-        res.send(data)
+    .delete('/:id', (req, res, next) => {
+        model.deleteUser(req.params.id)
+        .then(x => {
+            const data = { data: x, isSuccess: true };
+            res.send(data);
+        })
+        .catch(next);
     })
 
 module.exports = router;

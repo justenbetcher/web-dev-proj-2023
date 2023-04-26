@@ -1,10 +1,34 @@
 const userData = require('../data/users.json');
 const feedData = require('../data/feed.json');
 
-function makePost(post) {
-    const index = userData.users.findIndex(user => user.userId === post.userId);
-    data.users[index].postHistory.push(post);
-    feedData.feed.push(post);
+const { connect, ObjectId } = require('./mongo');
+
+
+async function userCollection() { 
+    const db = await connect();
+    return db.collection('users');
+}
+
+async function feedCollection() {
+    const db = await connect();
+    return db.collection('feed');
+}
+
+
+async function makePost(id, post) {
+    post.userId = id;
+    const feedCol = await feedCollection();
+    const feedResult = await feedCol.insertOne(post);
+
+    const userCol = await userCollection();
+    const user = await userCol.findOne({ _id: new ObjectId(id) });
+    user.postHistory.push(post);
+    const userResult = await userCol.updateOne(
+        { _id: new ObjectId(id) },
+        { $set: user },
+        { returnDocument: 'after' }
+    );
+    return { userResult, feedResult }
 }
 
 module.exports = {

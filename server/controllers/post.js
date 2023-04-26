@@ -4,11 +4,13 @@ const model = require('../models/post');
 const router = express.Router();
 
 router 
-    .post('/', (req, res) => {
-        const post = req.body;
-        model.makePost(post);
-        const data = { data: post, isSuccess: true };
-        res.send(data)
+    .post('/:id', (req, res, next) => {
+        model.makePost(req.params.id, req.body)
+        .then(holder => {
+            const data = { data: holder, isSuccess: true };
+            res.send(data);
+        })
+        .catch(next)
     })
 
 module.exports = router;

@@ -2,12 +2,53 @@
 ###
 GET http://localhost:3070/api/v1/users
 
+
 ###
-PATCH http://localhost:3070/api/v1/users
+GET http://localhost:3070/api/v1/users/history/64485a6eb5e56499bfd52569
+
+###
+PATCH http://localhost:3070/api/v1/users/64486d94880465fba38bc3b3
 Content-Type: application/json
 some-other-header: with my very personal information
 
 {
-    "id": "johndoe0",
-    "email": "this is a patch"
+    "password": "poopy poopy poopy"
 }
+
+###
+POST http://localhost:3070/api/v1/users 
+Content-Type: application/json 
+
+{
+    "name": "Ron Swanson 9",
+    "email": "ronswanson@email.com",
+    "password": "54321",
+    "postHistory": [
+        {
+            "user": "John Doe",
+            "exercise": {
+                "workoutType": "Swim",
+                "unit": "Kilometers",
+                "poolSize": 25,
+                "distance": 0,
+                "laps": 6,
+                "time": 120,
+                "stroke": "TEST",
+                "circuitArray": [
+                    "this",
+                    "is",
+                    "a",
+                    "test"
+                ],
+                "comment": "this is a test"
+            },
+            "date": 0,
+            "postId": "johndoe0000",
+            "userId": "johndoe0"
+        }
+        
+    ]
+}
+
+###
+DELETE http://localhost:3070/api/v1/users/ 
