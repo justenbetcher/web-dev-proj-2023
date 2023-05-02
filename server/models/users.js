@@ -68,7 +68,7 @@ async function searchUsers(keyWord, page=1, pageSize=30) {
     const col = await collection();
     const query = {
         $or: [
-            { name: { $regex: keyWork, $optoins: 'i' } },
+            { name: { $regex: keyWord, $optoins: 'i' } },
             { email: { $regex: keyWord, $options: 'i' } }
         ]
     };
@@ -78,6 +78,46 @@ async function searchUsers(keyWord, page=1, pageSize=30) {
     return { users, total }
 }
 
+async function login(email, password) {
+    const col = await collection();
+    const user = col.findOne({ email });
+    if(!user) { 
+        throw new Error('User not found');
+    }
+    if(user.password !== password) {
+        throw new Error('Invalide password');
+    }
+
+    const userNoPassword = { ...user, password: undefined };
+    const token = generateTokenAsync(userNoPassword, '1d');
+
+    return { user: userNoPassword, token }
+}
+
+function generateTokenAsync(user, expiresIn) {
+    return new Promise( (resolve, reject) => {
+        jwt.sign(user, process.env.JWT_SECRET ?? "", { expiresIn }, (err, token) => {
+            if(err) {
+                reject(err);
+            } else {
+                resolve(token);
+            }
+        });
+    });
+}
+
+function verifyTokenAsync(token) {
+    return new Promise((resolve, reject) => {
+        jwt.verify(token, process.env.JWT_SECRET ?? "", (err, user) => {
+            if(err) {
+                reject(err);
+            } else {
+                resolve(user);
+            }
+        });
+    });
+}
+
 
 module.exports = {
     getUsers,
@@ -85,5 +125,8 @@ module.exports = {
     updateUser,
     addUser,
     deleteUser,
-    searchUsers
+    searchUsers,
+    login,
+    generateTokenAsync,
+    verifyTokenAsync
 };
