@@ -1,72 +1,90 @@
 <script setup lang="ts">
-import type { Post, deletePost } from '@/model/post';
+import type { Post } from '@/model/post';
 import { useSession } from '../model/session';
-import { getUsers } from '../model/user';
+import { getHistory } from '../model/user';
 import { ref } from 'vue';
+import SwimPost from '@/components/SwimPost.vue';
+import WalkPost from '@/components/WalkPost.vue';
+import RunPost from '@/components/RunPost.vue';
+import WeightPost from '@/components/WeightPost.vue';
 
 const session = useSession();
 const isActive = ref(false);
+const history = ref<Post[]>([])
 
-const history = ref<Post[]>([]);
-getUsers().then((data) => {
-    const index = data.data.findIndex(user => user._id === session.user?._id);
-    history.value = data.data[index].postHistory ?? {} as Post[];
-})
+getHistory()
+    .then(data => {
+        history.value = data.data ?? [] as Post[];
+    })
 
 </script>
 
 <template>
+<h1 class="title">Your past Workouts</h1>
 <div class="container">
-    <h1 class="title">Your past Workouts</h1>
+    
     <div class="edit-button">
         <button class="button is-transparent edit" @click="isActive = !isActive">
             <span>edit</span>
         </button>
     </div>
 
-    <div class="columns" v-if="session.user != null">
-        <div class="box" v-for="post, i in history.slice().reverse()">
-
+    <div class="history-container" v-if="session.user != null">
+        <div class="post" v-for="post, i in history">
+            
             <div v-if="post.exercise.workoutType == 'Swim'">
-                <p class="post-name"><bolder>{{ post.user }}</bolder> went for a swim today!</p>
-                <img src="../assets/img/LogExerciseImg/swim.jpeg">
-                <p><bold>PoolSize:</bold> {{ post.exercise.poolSize }} (meters)</p>
-                <p><bold>Laps:</bold> {{ post.exercise.laps }}</p>
-                <p><bold>Stroke:</bold> {{ post.exercise.stroke }}</p>
+                
+                <SwimPost>
+                    <template #user>{{ post.user }}</template>
+                    <template #poolSize>{{ post.exercise.poolSize }}</template>
+                    <template #laps>{{ post.exercise.laps }}</template>
+                    <template #time>{{ post.exercise.time }}</template>
+                    <template #comment>{{ post.exercise.comment }}</template>
+                    <template #date>{{ post.date }}</template>
+                </SwimPost>
+                
             </div>
 
             <div v-else-if="post.exercise.workoutType == 'Walk'">
-                <p class="post-user"><bolder>{{ post.user }}</bolder> went for a walk today!</p>
-                <img src="../assets/img/LogExerciseImg/walk.jpeg">
-                <p><bold>Unit:</bold> {{ post.exercise.unit }}</p>
-                <p><bold>Distance:</bold> {{ post.exercise.distance }}</p>
+                <WalkPost>
+                    <template #user>{{ post.user }}</template>
+                    <template #unit>{{ post.exercise.unit }}</template>
+                    <template #distance>{{ post.exercise.distance }}</template>
+                    <template #time>{{ post.exercise.time }}</template>
+                    <template #comment>{{ post.exercise.comment }}</template>
+                    <template #date>{{ post.date }}</template>
+                </WalkPost>
             </div>
 
             <div v-else-if="post.exercise.workoutType == 'Run'">
-                <p class="post-user"><bolder>{{ post.user }}</bolder> went for a run today!</p>
-                <img src="../assets/img/LogExerciseImg/run.jpeg">
-                <p><bold>Unit:</bold> {{ post.exercise.unit }}</p>
-                <p><bold>Distance:</bold> {{ post.exercise.distance }}</p>
+                <RunPost>
+                    <template #user>{{ post.user }}</template>
+                    <template #unit>{{ post.exercise.unit }}</template>
+                    <template #distance>{{ post.exercise.distance }}</template>
+                    <template #time>{{ post.exercise.time }}</template>
+                    <template #comment>{{ post.exercise.comment }}</template>
+                    <template #date>{{ post.date }}</template>
+                </RunPost>
             </div>
 
             <div v-else>
-                <p class="post-user"><bolder>{{ post.user }}</bolder> went to the gym today!</p>
-                <img src="../assets/img/LogExerciseImg/weight-training.jpeg">
-                <p><bold>Exercises/ Movments</bold></p>
-                <ol>
+                <WeightPost>
+                    <template #user>{{ post.user }}</template>
+                    <template #circuit>
                         <li v-for="movment in post.exercise.circuitArray">{{ movment }}</li>
-                </ol>
+                    </template>
+                    <template #comment>{{ post.exercise.comment }}</template>
+                    <template #date>{{ post.date }}</template>
+                </WeightPost>
             </div>
-            <p><bold>Time:</bold> {{ post.exercise.time }} (min)</p>
-            <p><bold>Comment:</bold></p>
-            <p class="comment">{{ post.exercise.comment }}</p>
-            <br>
-            <p class="date"><small>{{ post.date }}</small></p>
 
             <button class="button is-danger" v-bind:class="{ 'is-active': isActive }">
                 <span>X</span>
             </button>
+            
         </div>
+            
+        
     </div>
 
     
@@ -77,7 +95,8 @@ getUsers().then((data) => {
 
 
 <style scoped>
-.columns{
+.history-container {
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: left;
@@ -86,15 +105,12 @@ getUsers().then((data) => {
 h1 {
     text-align: center;
 }
-.box{
+.post{
     width: 30%;
     position: relative;
-    overflow: visible;
-    min-height: 525px;
-    margin-right: 15px;
-    margin-bottom: 24px;
+    margin-right: 8px;
     display: flex;
-    flex-direction: column;
+    height: 550px;
 }
 img {
     height: 250px;
@@ -140,7 +156,7 @@ button.is-danger {
     bottom: 7px;
 }
 @media screen and (max-width: 1024px) {
-    .box {
+    .post {
         min-width: 350px;
         margin: 15px;
     }

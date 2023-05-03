@@ -41,3 +41,6 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:3070/api/v1/users/ 
+
+### seed
+POST http://localhost:3070/api/v1/users/seed

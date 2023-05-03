@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+    import { ref } from 'vue';
 
-const isMore = ref(false);
+    const isMore = ref(false);
 
 </script>
 
@@ -33,18 +33,8 @@ const isMore = ref(false);
 
 
 <style scoped>
-h1 {
-    text-align: center;
-}
-.container{
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: center;
-    align-items: center;
 
-}
 .box{
-    width: 40%;
     margin-top: 12px;
     margin-bottom: 12px;
     display: flex;
@@ -71,12 +61,6 @@ p > small {
 .date {
     position: absolute;
     bottom: 7px;
-}
-@media screen and (max-width: 1024px) {
-    .box {
-        min-width: 350px
-    }
-    
 }
 .info{
     display: flex;

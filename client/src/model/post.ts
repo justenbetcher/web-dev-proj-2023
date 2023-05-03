@@ -21,62 +21,22 @@ export interface Post {
     userId: string;
 }
 
-/*
-export function makePost(exercisePassed: Exercise | null) { 
-    if (exercisePassed == null || session.user == null) {
-        return;
-    }
-    let date = new Date().valueOf();
-    exerciseFeed.value.push({
-        user: session.user.name,
-        exercise: exercisePassed,
-        date: new Date(),
-        postId: session.user.name + date,
-        userId: session.user.userId,
-    });
 
-    session.user.postHistory.push({
-        user: session.user.name,
-        exercise: exercisePassed,
-        date: new Date(),
-        postId: session.user.name + date,
-        userId: session.user.userId,
-    });
-
-    resetExercise('');
-}
-*/
-
-export function makePost(currentExercise: Exercise) : Promise<DataEnvelope<Post>> {
+export async function makePost(currentExercise: Exercise) {
     let currentDate = new Date();
-    return api(`users/post/${session.user?.userId}`, {
+    return api(`post/${session.user?._id}`, {
         user: session.user?.name,
         exercise: currentExercise,
         date: currentDate,
-        postId: (session.user?.name ?? 'undefined')+ currentDate,
-        userId: session.user?.userId,
+        userId: session.user?._id,
     });
 }
 
-export function getFeed() : Promise<DataListEnvelope<Post>> {
+export async function getFeed() {
     return api('feed');
 }
 
 
 
-export function deletePost(index: number) {
-    if (session.user == null) {
-        return;
-    }
-    const ID = session.user.postHistory[index].postId;
 
-    for(let i = 0; i < exerciseFeed.value.length; i++) {
-        if ( session.user.postHistory[index].postId == exerciseFeed.value[i].postId) {
-            exerciseFeed.value.splice(i, 1);
-            break;
-        }
-    }
-
-    session.user.postHistory.splice(index, 1);
-}
 

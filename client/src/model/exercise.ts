@@ -1,7 +1,7 @@
 import { ref } from "vue";
 
 
-const Workout = ref({
+const workout = ref({
     exercise: null as Exercise | null
 });
 
@@ -19,12 +19,12 @@ export interface Exercise {
 }
 
 export function useExercises() {
-    return Workout;
+    return workout;
 }
 
-export function resetExercise(workout: string){
-    Workout.value.exercise = {
-        workoutType: workout,
+export function resetExercise(type: string){
+    workout.value.exercise = {
+        workoutType: type,
         unit: '',
         distance: 0,
         time: 0,
@@ -37,9 +37,9 @@ export function resetExercise(workout: string){
 }
 
 export function enterCircuit(movments: string) {
-    if (Workout.value.exercise == null) {
+    if (workout.value.exercise == null) {
         return;
     }
-    Workout.value.exercise.circuitArray = movments.split('; ');
+    workout.value.exercise.circuitArray = movments.split('; ');
 }
 

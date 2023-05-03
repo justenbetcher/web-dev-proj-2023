@@ -1,6 +1,9 @@
 import { api } from './session';
 import type { DataEnvelope, DataListEnvelope } from './myFetch';
 import type { Post } from './post';
+import { useSession } from './session';
+
+const session = useSession();
 
 export interface User {
     name: string;
@@ -12,10 +15,15 @@ export interface User {
     _id?: string;
 }
 
-export function getUsers() : Promise<DataListEnvelope<User>> {
-    return api('users');
+export async function getUsers()  {
+    return await api('users');
 }
 
-export function addUser(user : User) : Promise<DataEnvelope<User>> {
-    return api('users', user);
+export async function addUser(user : User)  {
+    return  api('users', user);
+}
+
+export async function getHistory() {
+    return api(`users/history/${session.user!._id}`);
+
 }

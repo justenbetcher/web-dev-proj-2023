@@ -6,8 +6,8 @@ const router = express.Router();
 router 
     .post('/:id', (req, res, next) => {
         model.makePost(req.params.id, req.body)
-        .then(holder => {
-            const data = { data: holder, isSuccess: true };
+        .then(x => {
+            const data = { data: x, isSuccess: true };
             res.send(data);
         })
         .catch(next)

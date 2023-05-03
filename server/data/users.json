@@ -1,7 +1,6 @@
 {
     "users": [
         {
-            "id": "johndoe0",
             "name": "John Doe",
             "email": "johndoe@email.com",
             "password": "1234",
@@ -25,8 +24,7 @@
                         "comment": "this is a test"
                     },
                     "date": 0,
-                    "postID": "johndoe0000",
-                    "userId": "johndoe0"
+                    "userId": "0"
                 }
             ]
         }  

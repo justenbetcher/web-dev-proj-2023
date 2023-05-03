@@ -1,7 +1,6 @@
 {
     "feed": [
         {
-            "userId": "johndoe0",
             "user": "John Doe",
             "exercise": {
                 "workoutType": "Swim",
@@ -20,7 +19,7 @@
                 "comment": "this is a test"
             },
             "date": 0,
-            "postID": "johndoe0000"
+            "userId": "0"
         }
     ]
 }

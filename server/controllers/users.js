@@ -23,7 +23,7 @@ router
         .catch(next);
     })
 
-    .get('/history/:id', requireLogin(), (req, res, next) => {
+    .get('/history/:id', requireLogin(),(req, res, next) => {
         model.getUserById(req.params.id)
         .then(user => {
             const data = { data: user.postHistory ?? [], total: user.postHistory.length ?? 0, isSuccess: true  };
@@ -42,10 +42,19 @@ router
         .catch(next);
     })
 
+    .post('/seed', (req, res, next) => {
+        model.seed()
+        .then(x => {
+            const data = { data: x, isSuccess: true };
+            res.send(data);
+        })
+        .catch(next);
+    })
+
     .post('/login', (req, res, next) => {
         model.login(req.body.email, req.body.password)
         .then(x => {
-            const data = { data: { ...x.user, token: x.token, }, isSuccess: true };
+            const data = { data: { ...x.user, token: x.token }, isSuccess: true };
             res.send(data);
         })
         .catch(next);

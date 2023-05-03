@@ -6,6 +6,11 @@
     import { useRouter } from 'vue-router';
 
     const session = useSession();
+    const router = useRouter();
+
+    if(!session.user) {
+        router.push('/login');
+    }
 
 </script>
 

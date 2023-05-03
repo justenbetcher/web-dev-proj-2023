@@ -1,8 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
 
 import { useLogin, useSession } from '../model/session';
+
+const router = useRouter();
+console.log(router);
+
+
 
 
 const email = ref('');
@@ -37,9 +42,9 @@ console.log(session.user);
 
     
         
-    <RouterLink to="/" class="button is-success"  @click="useLogin(email, password)">
+    <button class="button is-success"  @click="useLogin(email, password); useRouter().push('/exercise')">
         <span>Log In</span>
-    </RouterLink>
+    </button>
         
 </template>
 

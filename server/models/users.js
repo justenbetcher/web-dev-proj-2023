@@ -78,6 +78,12 @@ async function searchUsers(keyWord, page=1, pageSize=30) {
     return { users, total }
 }
 
+async function seed() {
+    const col = await collection();
+    const result = await col.insertMany(data.users);
+    return result.insertedCount;
+}
+
 async function login(email, password) {
     const col = await collection();
     const user = await col.findOne({ email });
@@ -134,5 +140,6 @@ module.exports = {
     searchUsers,
     login,
     generateTokenAsync,
-    verifyTokenAsync
+    verifyTokenAsync,
+    seed
 };

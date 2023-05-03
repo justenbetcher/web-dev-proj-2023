@@ -17,11 +17,18 @@ async function getFeed(page = 1, pageSize = 50) {
 
 async function deletePost(id) {
     const col = await collection();
-    const result = col.deleteOne({ _id: new ObjectId(id) });
+    const result = await col.deleteOne({ _id: new ObjectId(id) });
     return result;
+}
+
+async function seed() {
+    const col = await collection();
+    const result = await col.insertMany(data.feed);
+    return result.insertedCount;
 }
 
 module.exports = { 
     getFeed,
     deletePost,
+    seed
 }

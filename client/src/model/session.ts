@@ -22,12 +22,15 @@ export function useSession() {
 export function api(url: string, data?: any, method?: string, headers?: any) {
     session.isloading = true;
 
+    
+
     if(session.user?.token) {
         headers = {
-            "Authorizatoin": `Bearer ${session.user.token}`,
+            "Authorization": `Bearer ${session.user.token}`,
             ...headers,
         }
     }
+    
 
     return myFetch.api(url, data, method, headers)
         .catch(err => {
@@ -50,25 +53,23 @@ export function addMessage(msg: string, type: "success" | "danger" | "warning" |
     })
 }
 
-export function useLogin( loginEmail: string, loginPassword: string) {
-    const route = useRouter();
-        login(loginEmail, loginPassword)
-            .then(data => {
-                console.log(data);
+export async function useLogin( loginEmail: string, loginPassword: string) {
+    const router = useRouter();
+    //const data = await login(loginEmail, loginPassword);
+    console.log('hello1');
+    
+    const data = await login(loginEmail, loginPassword);
 
-                
-                session.user = data.data;
-                if(!session.user) {
-                    session.messages.push({ msg: 'User not found', type: 'danger' });
-                }
+    session.user = data.data;
+    console.log(session.user);
+    if(!session.user) {
+        session.messages.push({ msg: 'User not found', type: 'danger' });
+    }
 
-                route.push('/');
-            })
 
 }
 
-
-function login(email: string, password: string) : Promise<DataEnvelope<User>> {
+async function login(email: string, password: string) {
     return api('users/login', { email: email, password: password });
 }
 
