@@ -55,13 +55,14 @@ export function useLogin( loginEmail: string, loginPassword: string) {
         login(loginEmail, loginPassword)
             .then(data => {
                 console.log(data);
+
                 
                 session.user = data.data;
                 if(!session.user) {
                     session.messages.push({ msg: 'User not found', type: 'danger' });
                 }
 
-                route.push('/home');
+                route.push('/');
             })
 
 }

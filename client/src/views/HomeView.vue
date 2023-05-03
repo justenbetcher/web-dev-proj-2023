@@ -8,7 +8,7 @@ const session = useSession();
 
 <template>
     <div class="container" >
-        
+        This is home
     </div>
 
 </template>

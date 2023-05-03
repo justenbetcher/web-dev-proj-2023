@@ -3,16 +3,13 @@
     import NavBar from './components/NavBar.vue'
     import Footer from './components/Footer.vue'
     import { useSession } from './model/session'
-    
-    
+    import { useRouter } from 'vue-router';
 
-    const session = useSession()
-    
+    const session = useSession();
+
 </script>
 
 <template>
-
-    
 
     <div v-if="session.user">
         <NavBar />
@@ -25,12 +22,7 @@
     <div v-if="session.user">
         <Footer />
     </div>
-        
-   
     
-    
-    
-
 </template>
 
 <style scoped>
