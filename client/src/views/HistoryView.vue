@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Post, deletePost } from '@/model/post';
-import { useSession, getUsers } from '../model/session';
+import { useSession } from '../model/session';
+import { getUsers } from '../model/user';
 import { ref } from 'vue';
 
 const session = useSession();
@@ -8,7 +9,7 @@ const isActive = ref(false);
 
 const history = ref<Post[]>([]);
 getUsers().then((data) => {
-    const index = data.data.findIndex(user => user.userId === session.user?.userId);
+    const index = data.data.findIndex(user => user._id === session.user?._id);
     history.value = data.data[index].postHistory ?? {} as Post[];
 })
 
@@ -62,7 +63,7 @@ getUsers().then((data) => {
             <br>
             <p class="date"><small>{{ post.date }}</small></p>
 
-            <button class="button is-danger" v-bind:class="{ 'is-active': isActive }" @click="deletePost(i)">
+            <button class="button is-danger" v-bind:class="{ 'is-active': isActive }">
                 <span>X</span>
             </button>
         </div>

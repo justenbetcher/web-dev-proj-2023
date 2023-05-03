@@ -1,8 +1,9 @@
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router';
 import * as myFetch from './myFetch';
+import type { User } from './user';
 import type { DataEnvelope, DataListEnvelope } from './myFetch';
-import type { Post } from './post';
+
 
 const session = reactive({      //reactive cannot be assigend to a new object, by making a variable user                  
     user: null as User | null,
@@ -13,15 +14,6 @@ const session = reactive({      //reactive cannot be assigend to a new object, b
     }[]
 })
 
-
-export interface User {
-    userId?: string; // the question mark means the atribute is optional, if nothing is provided it will be undefind
-    name: string;
-    email?: string;
-    password?: string;
-    postHistory?: Post[];
-}
-
 export function useSession() {
     return session;
 }
@@ -29,6 +21,14 @@ export function useSession() {
 
 export function api(url: string, data?: any, method?: string, headers?: any) {
     session.isloading = true;
+
+    if(session.user?.token) {
+        headers = {
+            "Authorizatoin": `Bearer ${session.user.token}`,
+            ...headers,
+        }
+    }
+
     return myFetch.api(url, data, method, headers)
         .catch(err => {
             console.error({err});
@@ -42,15 +42,35 @@ export function api(url: string, data?: any, method?: string, headers?: any) {
         })
 }
 
-export function useLogin(user : User) {
-    const router = useRouter();
-
-    return function() {
-        session.user = user;
-
-        router.push("/");
-    }
+export function addMessage(msg: string, type: "success" | "danger" | "warning" | "info") {
+    console.log({msg, type});
+    session.messages.push({
+        msg,
+        type,
+    })
 }
+
+export function useLogin( loginEmail: string, loginPassword: string) {
+    const route = useRouter();
+        login(loginEmail, loginPassword)
+            .then(data => {
+                console.log(data);
+                
+                session.user = data.data;
+                if(!session.user) {
+                    session.messages.push({ msg: 'User not found', type: 'danger' });
+                }
+
+                route.push('/home');
+            })
+
+}
+
+
+function login(email: string, password: string) : Promise<DataEnvelope<User>> {
+    return api('users/login', { email: email, password: password });
+}
+
 
 export function useLogout() {
     const router = useRouter();
@@ -63,43 +83,6 @@ export function useLogout() {
     }
 }
 
-export function getUsers() : Promise<DataListEnvelope<User>> {
-    return api('users');
-}
-/*
-export function login() {
-    session.user = {
-        name: 'john doe',
-        id: 0,
-    }
-}
-*/
-
-/*
-export function login(id: number) {
-    session.user = userArray.find(x => x.id == id) ?? null;
-
-    /*
-    for (let i = 0; i < userArray.length; i++) {
-        if (userArray[i].id == id)
-        {
-            session.user = userArray[i];
-            break;
-        }
-    }
-}
-*/
-
-/*
-export function newAccout(namePassed: string) {
-    userArray.push ({
-        name: namePassed,
-        id: userArray.length,
-        postHistory: [],
-    });
-}
-*/
-
 export function lastWorkout() {
     if (session.user == null) {
         return;
@@ -111,16 +94,3 @@ export function lastWorkout() {
     return Math.abs(days);
 }
 
-/*
-userArray.push({
-    name: 'Justen Betcher',
-    id: 0,
-    postHistory: [],
-})
-
-userArray.push({
-    name: 'John Henrey',
-    id: 1,
-    postHistory: [],
-})
-*/

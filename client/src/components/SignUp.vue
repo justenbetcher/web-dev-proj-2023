@@ -1,16 +1,21 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { addUser, type User } from '../model/user';
 
 
+const newUser = ref<User>({
+    name: '',
+    email: '',
+    password: '',
+})
 
-const name = ref('');
 </script>
 
 <template>
 
     <div class="field">
         <p class="control has-icons-left has-icons-right">
-        <input class="input" type="text" placeholder="Name" v-model="name">
+        <input class="input" type="text" placeholder="Name" v-model="newUser.name">
         <span class="icon is-small is-left">
             <i class="fas fa-person"></i>
         </span>
@@ -22,7 +27,7 @@ const name = ref('');
 
     <div class="field">
         <p class="control has-icons-left">
-        <input class="input" type="email" placeholder="Email">
+        <input class="input" type="email" placeholder="Email" v-model="newUser.email">
         <span class="icon is-small is-left">
             <i class="fas fa-envelope"></i>
         </span>
@@ -31,7 +36,7 @@ const name = ref('');
     
     <div class="field">
         <p class="control has-icons-left">
-        <input class="input" type="password" placeholder="Password">
+        <input class="input" type="password" placeholder="Password" v-model="newUser.password">
         <span class="icon is-small is-left">
             <i class="fas fa-lock"></i>
         </span>
@@ -39,7 +44,7 @@ const name = ref('');
     </div>
 
     <div class="field">
-        <RouterLink to='/login' class="button is-success submit" >
+        <RouterLink to='/login' class="button is-success submit" @click="addUser(newUser)">
             <span>Create Account</span>
         </RouterLink>
     </div>

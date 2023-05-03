@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import LogIn from '../components/LogIn.vue';
-import SignUp from '../components/SignUp.vue'
+import SignUp from '../components/SignUp.vue';
+import { useSession } from '@/model/session';
+
+const session = useSession();
 
 const isLogIn = ref(true);
 const isActive = ref(true);
@@ -17,6 +20,7 @@ const isActive = ref(true);
 
 
         <div class="box">
+            <div v-for="message in session.messages">{{ message.msg }}</div>
             <div class="field">
                 <a v-bind:class="{ 'is-active': isLogIn }" href="#" @click="isLogIn = true">Log In</a>
                 <a class="ml-2" v-bind:class="{ 'is-active': !isLogIn }" href="#" @click="isLogIn = false">Sign Up</a>
@@ -79,14 +83,7 @@ const isActive = ref(true);
             margin: 0;
             background-color: black;
         }
-        .bg-img{
-            background-image: url('../assets/img/LogInImg.jpeg');
-            height: 100%;
-            background-size: cover;
-            background-repeat: no-repeat;
-            filter: blur(3px);
-                -webkit-filter: blur(3px);
-        }
+        
         .container{
             justify-content: center;
             align-items: center;
@@ -95,9 +92,6 @@ const isActive = ref(true);
             width: 100%;
             flex-direction: column;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
         }
         .has-text-primary{
             color: rgb(92, 210, 249) !important;
