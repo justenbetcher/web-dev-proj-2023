@@ -18,8 +18,9 @@ function parseAuthorizationHeader(req, res, next) {
 
 function requireLogin(requireAdmin = false) {
     return (req, res, next) => {
+        console.log(req.user);
         if (req.user) {
-            if (req.user.role !== 'admin' && !requireAdmin) {
+            if (req.user.role !== 'admin' && requireAdmin) {
                 next({ code: 403, message: 'this resource is admin only' });
             } else {
                 next();

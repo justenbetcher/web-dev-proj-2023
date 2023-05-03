@@ -4,6 +4,7 @@ const path = require('path');
 const users = require('./controllers/users');
 const feed = require('./controllers/feed');
 const post = require('./controllers/post');
+const { requireLogin, parseAuthorizationHeader } = require('./middleware/authorization');
 
 const app = express();
 
@@ -15,19 +16,25 @@ app
     .use(express.json())
     .use(express.static(path.join(__dirname, '../client/dist')))
 
+    //CORS
     .use((req, res, next) => {
         res.header('Access-Control-Allow-Origin', '*')
-        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
         res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS')
+        if(req.method === 'OPTIONS') {
+            return res.status(200).send({});
+        }
         next()
     })
 
+    .use(parseAuthorizationHeader)
+
 // Actions
 app
-    
     .use('/api/v1/users', users)
     .use('/api/v1/feed', feed)
     .use('/api/v1/post', post)
+    
 // Catch all
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/dist/index.html'))

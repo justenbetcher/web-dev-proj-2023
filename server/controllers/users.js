@@ -41,6 +41,15 @@ router
         })
         .catch(next);
     })
+
+    .post('/login', (req, res, next) => {
+        model.login(req.body.email, req.body.password)
+        .then(x => {
+            const data = { data: { ...x.user, token: x.token, }, isSuccess: true };
+            res.send(data);
+        })
+        .catch(next);
+    })
     
 
     .post('/', (req, res, next) => {

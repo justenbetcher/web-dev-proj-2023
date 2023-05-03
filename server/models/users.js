@@ -80,18 +80,24 @@ async function searchUsers(keyWord, page=1, pageSize=30) {
 
 async function login(email, password) {
     const col = await collection();
-    const user = col.findOne({ email });
+    const user = await col.findOne({ email });
     if(!user) { 
         throw new Error('User not found');
     }
     if(user.password !== password) {
+        console.log(password)
+        console.log(user.password)
         throw new Error('Invalide password');
     }
 
     const userNoPassword = { ...user, password: undefined };
-    const token = generateTokenAsync(userNoPassword, '1d');
+    const token = await generateTokenAsync(userNoPassword, '1d');
 
     return { user: userNoPassword, token }
+}
+
+async function oAuthLogin(provider, accessToken) {
+
 }
 
 function generateTokenAsync(user, expiresIn) {
