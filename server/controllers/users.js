@@ -1,10 +1,11 @@
 const express = require('express');
 const model = require('../models/users');
+const { requireLogin } = require('../middleware/authorization');
 
 const router = express.Router();
 
 router
-    .get('/', (req, res, next) => {
+    .get('/', requireLogin(true), (req, res, next) => {
         model.getUsers(+req.query.page, +req.query.pageSize)
             .then(holder => {
                 const data = { data: holder.users, total: holder.total, isSuccess: true };
@@ -13,9 +14,7 @@ router
             .catch(next);
     })
 
-    
-
-    .get('/:id', (req, res, next) => {
+    .get('/:id', requireLogin(), (req, res, next) => {
         model.getUserById(req.params.id)
         .then(user => {
             const data = { data: user, isSuccess: true };
@@ -24,7 +23,7 @@ router
         .catch(next);
     })
 
-    .get('/history/:id', (req, res, next) => {
+    .get('/history/:id', requireLogin(), (req, res, next) => {
         model.getUserById(req.params.id)
         .then(user => {
             const data = { data: user.postHistory ?? [], total: user.postHistory.length ?? 0, isSuccess: true  };
@@ -34,7 +33,7 @@ router
     })
 
     
-    .patch('/:id', (req, res, next) => {
+    .patch('/:id', requireLogin(), (req, res, next) => {
         model.updateUser(req.params.id, req.body)
         .then(x => {
             const data = { data: x, isSuccess: true };
@@ -51,7 +50,6 @@ router
             res.send(data);
         })
         .catch(next)
-        
     })
 
     .delete('/:id', (req, res, next) => {
