@@ -17,7 +17,7 @@ export interface Post {
     user: string;
     exercise: Exercise;
     date: Date;
-    postId: string;
+    _id?: string;
     userId: string;
 }
 
@@ -30,6 +30,10 @@ export async function makePost(currentExercise: Exercise) {
         date: currentDate,
         userId: session.user?._id,
     });
+}
+
+export async function deletePost(postId: string) {
+    return api(`post/${postId}/${session.user?._id}`, undefined, "DELETE");
 }
 
 export async function getFeed() {

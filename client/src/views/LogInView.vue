@@ -20,7 +20,6 @@ const isActive = ref(true);
 
 
         <div class="box">
-            <div v-for="message in session.messages">{{ message.msg }}</div>
             <div class="field">
                 <a v-bind:class="{ 'is-active': isLogIn }" href="#" @click="isLogIn = true">Log In</a>
                 <a class="ml-2" v-bind:class="{ 'is-active': !isLogIn }" href="#" @click="isLogIn = false">Sign Up</a>
@@ -35,6 +34,11 @@ const isActive = ref(true);
             <div v-else>
                 <SignUp />
             </div>
+
+            <div class="err"> 
+                <p class="has-text-danger">{{ session.messages[session.messages.length - 1].msg ?? ''}}</p>
+            </div>
+
             
 
             <!--
@@ -75,6 +79,9 @@ const isActive = ref(true);
 <style scoped>
         *{
             box-sizing: border-box;
+        }
+        .err {
+            text-align: center;
         }
         html, body{
             height: 100%;

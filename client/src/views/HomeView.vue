@@ -10,12 +10,13 @@ const session = useSession();
     <div class="container" >
         This is home
     </div>
-
 </template>
 
 
 <style scoped>
 .container {
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,7 +24,8 @@ const session = useSession();
     background-image: url('../assets/img/homebkg.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 600px;
+    background-position-x: center;
+    background-position: center;
     color: white;
 }
 h1 {
@@ -32,7 +34,4 @@ h1 {
 p {
     font-size: 1.45em;
 }
-
-
-
 </style>

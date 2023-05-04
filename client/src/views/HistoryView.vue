@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Post } from '@/model/post';
+import { deletePost, type Post } from '@/model/post';
 import { useSession } from '../model/session';
 import { getHistory } from '../model/user';
 import { ref } from 'vue';
@@ -7,21 +7,33 @@ import SwimPost from '@/components/SwimPost.vue';
 import WalkPost from '@/components/WalkPost.vue';
 import RunPost from '@/components/RunPost.vue';
 import WeightPost from '@/components/WeightPost.vue';
+import { useRouter } from 'vue-router';
 
 const session = useSession();
 const isActive = ref(false);
 const history = ref<Post[]>([])
 
-getHistory()
-    .then(data => {
-        history.value = data.data ?? [] as Post[];
-    })
+const router = useRouter()
+
+
+
+    getHistory()
+        .then(data => {
+            history.value = data.data ?? [] as Post[];
+        })
+
+
+
 
 </script>
 
 <template>
 <h1 class="title">Your past Workouts</h1>
-<div class="container">
+<div class="container" v-if="history.length == 0">
+    <p>you have no posts yet</p>
+</div>
+
+<div class="container" v-else>
     
     <div class="edit-button">
         <button class="button is-transparent edit" @click="isActive = !isActive">
@@ -78,7 +90,7 @@ getHistory()
                 </WeightPost>
             </div>
 
-            <button class="button is-danger" v-bind:class="{ 'is-active': isActive }">
+            <button class="button is-danger" v-bind:class="{ 'is-active': isActive }" @click="deletePost(post._id ?? '')">
                 <span>X</span>
             </button>
             
@@ -101,6 +113,10 @@ getHistory()
     flex-wrap: wrap;
     justify-content: left;
     align-items: center;
+    min-height: 100vh;
+}
+.container {
+    min-height: 70vh;
 }
 h1 {
     text-align: center;

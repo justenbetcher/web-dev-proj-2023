@@ -13,5 +13,14 @@ router
         .catch(next)
     })
 
+    .delete('/:postId/:userId', (req, res, next) => {
+        model.deletePost(req.params.postId, req.params.userId)
+        .then(x => {
+            const data = { data: x.feedResult, isSuccess: true };
+            res.send(data);
+        })
+        .catch(next)
+    })
+
 
 module.exports = router;
