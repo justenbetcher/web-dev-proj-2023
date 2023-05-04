@@ -53,17 +53,22 @@ export function addMessage(msg: string, type: "success" | "danger" | "warning" |
     })
 }
 
-export async function useLogin( loginEmail: string, loginPassword: string) {
+export function useLogin() {
     const router = useRouter();
     //const data = await login(loginEmail, loginPassword);
     console.log('hello1');
     
-    const data = await login(loginEmail, loginPassword);
+    return async function( loginEmail: string, loginPassword: string){
+        const data = await login(loginEmail, loginPassword);
 
-    session.user = data.data;
-    console.log(session.user);
-    if(!session.user) {
-        session.messages.push({ msg: 'User not found', type: 'danger' });
+        session.user = data.data;
+        console.log(session.user);
+        if(!session.user) {
+            session.messages.push({ msg: 'User not found', type: 'danger' });
+        }
+        else {
+            router.push('/');
+        }
     }
 
 

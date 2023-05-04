@@ -7,6 +7,8 @@ import { useLogin, useSession } from '../model/session';
 const router = useRouter();
 console.log(router);
 
+const login = useLogin();
+
 
 
 
@@ -42,7 +44,7 @@ console.log(session.user);
 
     
         
-    <button class="button is-success"  @click="useLogin(email, password); useRouter().push('/exercise')">
+    <button class="button is-success"  @click="login(email, password)">
         <span>Log In</span>
     </button>
         

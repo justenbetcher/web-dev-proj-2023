@@ -6,7 +6,7 @@
 </script>
 
 <template>
-        <div class="box">
+        <div class="box" v-bind:class="{ more: isMore }">
             <p><bolder><slot name="user" /></bolder> went to the gym today!</p>
                 <img src="../assets/img/LogExerciseImg/weight-training.jpeg">
                 <div class="info" v-bind:class="{ more: isMore }">
@@ -43,6 +43,10 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    height: 500px;
+}
+.box.more {
+    height: auto;
 }
 ol{
     margin-left: 40px;

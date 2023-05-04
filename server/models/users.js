@@ -91,8 +91,6 @@ async function login(email, password) {
         throw new Error('User not found');
     }
     if(user.password !== password) {
-        console.log(password)
-        console.log(user.password)
         throw new Error('Invalide password');
     }
 

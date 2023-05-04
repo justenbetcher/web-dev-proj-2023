@@ -65,7 +65,6 @@ router
         model.addUser(req.body)
         .then(user => {
             const data = { data: user, isSuccess: true };
-            console.log(data);
             res.send(data);
         })
         .catch(next)

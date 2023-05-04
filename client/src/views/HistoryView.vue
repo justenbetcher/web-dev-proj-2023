@@ -110,8 +110,8 @@ h1 {
     position: relative;
     margin-right: 8px;
     display: flex;
-    height: 550px;
 }
+
 img {
     height: 250px;
 }
