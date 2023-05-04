@@ -16,14 +16,14 @@ export function useFeed() {
 export interface Post {
     user: string;
     exercise: Exercise;
-    date: Date;
+    date: number;
     _id?: string;
     userId: string;
 }
 
 
 export async function makePost(currentExercise: Exercise) {
-    let currentDate = new Date();
+    let currentDate = new Date().valueOf();
     return api(`post/${session.user?._id}`, {
         user: session.user?.name,
         exercise: currentExercise,

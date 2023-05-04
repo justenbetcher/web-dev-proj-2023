@@ -26,7 +26,8 @@ router
     .get('/history/:id', requireLogin(),(req, res, next) => {
         model.getUserById(req.params.id)
         .then(user => {
-            const data = { data: user.postHistory ?? [], total: user.postHistory.length ?? 0, isSuccess: true  };
+            const data = { data: user.postHistory ?? [], total: (user.postHistory.length ?? 0), isSuccess: true  };
+            console.log(data);
             res.send(data);
         })
         .catch(next);

@@ -22,6 +22,9 @@ async function makePost(id, post) {
 
     const userCol = await userCollection();
     const user = await userCol.findOne({ _id: new ObjectId(id) });
+    if(user.postHistory == undefined) {
+        user.postHistory = [];
+    }
     user.postHistory.push(post);
     const userResult = await userCol.updateOne(
         { _id: new ObjectId(id) },
