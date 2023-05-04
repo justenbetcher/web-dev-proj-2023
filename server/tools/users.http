@@ -24,10 +24,10 @@ POST http://localhost:3070/api/v1/users
 Content-Type: application/json 
 
 {
-    "name": "RegularAssDude",
-    "email": "regular2@email.com",
-    "password": "123456",
-    "role": "user"
+    "name": "admin",
+    "email": "admin@email.com",
+    "password": "admin",
+    "role": "admin"
 }
 
 ###

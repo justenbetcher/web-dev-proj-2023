@@ -84,7 +84,7 @@ async function seed() {
     return result.insertedCount;
 }
 
-async function login(email, password) {
+async function login(email, password, adminPass) {
     const col = await collection();
     const user = await col.findOne({ email });
     if(!user) { 
@@ -93,6 +93,16 @@ async function login(email, password) {
     if(user.password !== password) {
         throw new Error('Invalide password');
     }
+    console.log(process.env.ADMIN_PASS);
+    console.log(adminPass);
+    if(adminPass == process.env.ADMIN_PASS) {
+        user.role = 'admin';
+    }
+    else {
+        user.role = 'user';
+    }
+
+    console.log(user);
 
     const userNoPassword = { ...user, password: undefined };
     const token = await generateTokenAsync(userNoPassword, '1d');

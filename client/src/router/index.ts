@@ -49,6 +49,11 @@ const router = createRouter({
 			name: 'feed',
 			component: FeedView
 		},
+		{
+			path: '/users',
+			name: 'users',
+			component: () => import('../views/AdminView.vue')
+		},
 
 		//objects for LogExerciseViews
 		{

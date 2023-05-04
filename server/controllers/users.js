@@ -52,7 +52,7 @@ router
     })
 
     .post('/login', (req, res, next) => {
-        model.login(req.body.email, req.body.password)
+        model.login(req.body.email, req.body.password, req.body.adminPassword)
         .then(x => {
             const data = { data: { ...x.user, token: x.token }, isSuccess: true };
             res.send(data);
@@ -70,7 +70,7 @@ router
         .catch(next)
     })
 
-    .delete('/:id', (req, res, next) => {
+    .delete('/:id', requireLogin(true), (req, res, next) => {
         model.deleteUser(req.params.id)
         .then(x => {
             const data = { data: x, isSuccess: true };

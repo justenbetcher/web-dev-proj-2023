@@ -55,11 +55,9 @@ export function addMessage(msg: string, type: "success" | "danger" | "warning" |
 
 export function useLogin() {
     const router = useRouter();
-    //const data = await login(loginEmail, loginPassword);
-    console.log('hello1');
     
-    return async function( loginEmail: string, loginPassword: string){
-        const data = await login(loginEmail, loginPassword);
+    return async function( email: string, password: string, adminPassword: string){
+        const data = await login(email, password, adminPassword);
 
         session.user = data.data;
         console.log(session.user);
@@ -74,8 +72,8 @@ export function useLogin() {
 
 }
 
-async function login(email: string, password: string) {
-    return api('users/login', { email: email, password: password });
+async function login(email: string, password: string, adminPass: string) {
+    return api('users/login', { email: email, password: password, adminPassword: adminPass });
 }
 
 

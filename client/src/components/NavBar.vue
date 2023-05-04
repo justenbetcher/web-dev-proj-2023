@@ -35,6 +35,8 @@
 
                 <RouterLink to="/feed" class="navbar-item">Feed</RouterLink>
 
+                <RouterLink to="/users" class="navbar-item">Users</RouterLink>
+
             </div>
         
     

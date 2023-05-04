@@ -25,5 +25,8 @@ export async function addUser(user : User)  {
 
 export async function getHistory() {
     return api(`users/history/${session.user!._id}`);
+}
 
+export async function deleteUser(id: string) {
+    return api(`users/${id}`, undefined, 'DELETE');
 }

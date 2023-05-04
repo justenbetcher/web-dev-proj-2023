@@ -14,6 +14,7 @@ const login = useLogin();
 
 const email = ref('');
 const password = ref('');
+const adminPass = ref('');
 const session = useSession();
 
 console.log(session.user);
@@ -40,13 +41,24 @@ console.log(session.user);
         </span>
         </p>
     </div>
+    <div class="field">
+        <p>Enter admin password to login as admin</p>
+        <p class="control has-icons-left">
+            <input class="input" type="password" placeholder="Admin Password" v-model="adminPass">
+            <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+            </span>             
+        </p>
+    </div>
     
 
     
         
-    <button class="button is-success"  @click="login(email, password)">
+    <button class="button is-success"  @click="login(email, password, adminPass)">
         <span>Log In</span>
     </button>
+
+    <p>{{ adminPass }}</p>
         
 </template>
 
