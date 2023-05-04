@@ -36,7 +36,7 @@ const isActive = ref(true);
             </div>
 
             <div class="err"> 
-                <p class="has-text-danger">{{ (session.messages.length > 0) ? session.messages[session.messages.length-1] : ''}}</p>
+                <p class="has-text-danger">{{ (session.messages.length > 0) ? session.messages[session.messages.length-1].msg : ''}}</p>
             </div>
 
             

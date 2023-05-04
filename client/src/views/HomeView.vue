@@ -17,12 +17,13 @@ function getLastWorkout() {
 
 <template>
     <div class="container" >
-        <div v-if="session.user?.postHistory == undefined">
-            <p>You haven't posted any workouts yet. Get started <a @click="router.push('/exercise')">here</a></p>
-        </div>
-        <div v-else>
+        <div v-if="session.user?.postHistory != undefined">
             <p>Your last workout was {{ getLastWorkout() }} milliseconds</p>
         </div>
+        <div v-else>
+            <p>You haven't posted any workouts yet. Get started <a @click="router.push('/exercise')">here</a></p>
+        </div>
+        
     </div>
 </template>
 
