@@ -17,24 +17,22 @@
 </script>
 
 <template>
+    <h1 class="title">Users</h1>
     <div class="container" v-if="session.user?.role != 'admin'">
         <p>must be an admin to view this page</p>
     </div>
     <div class="container">
         <div class="box" v-for="user in users">
-            <div class="name">
-                <p>{{ user.name }}</p>
+            <div class="name item">
+                <p>user: {{ user.name }}</p>
             </div>
-            <div class="email">
-                <p>{{ user.email }}</p>
+            <div class="email item">
+                <p>email: {{ user.email }}</p>
             </div>
-            <div class="id">
-                <p>{{ user._id }}</p>
+            <div class="id item">
+                <p>id: {{ user._id }}</p>
             </div>
-            <div class="role">
-                <p>{{ user.role }}</p>
-            </div>
-            <button class="button is-danger" @click="deleteUser(user._id ?? '')">delete</button>
+            <button class="button is-danger item" @click="deleteUser(user._id ?? '')">delete</button>
         </div>
         
     </div>
@@ -43,5 +41,20 @@
 
 
 <style scoped>
+    .box {
+        display: flex;
+        justify-content: space-between;
+    }
+    .item {
+        display:inline-block;
+        margin: none;
+    }
+    .container {
+        min-height: 80vh;
+    }
+    h1 {
+        text-align: center;
+    }
+
 
 </style>
