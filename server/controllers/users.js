@@ -33,6 +33,16 @@ router
         .catch(next);
     })
 
+    .get('/search/:word', requireLogin(), (req, res, next) => {
+        console.log('hello');
+        model.searchUsers(req.params.word)
+        .then(x => {
+            const data = { data: x.users, total: x.total, isSuccess: true };
+            res.send(data);
+        })
+        .catch(next);
+    })
+
     
     .patch('/:id', requireLogin(), (req, res, next) => {
         model.updateUser(req.params.id, req.body)

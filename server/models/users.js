@@ -65,10 +65,11 @@ async function deleteUser(id) {
 }
 
 async function searchUsers(keyWord, page=1, pageSize=30) {
+    console.log('in model')
     const col = await collection();
     const query = {
         $or: [
-            { name: { $regex: keyWord, $optoins: 'i' } },
+            { name: { $regex: keyWord, $options: 'i' } },
             { email: { $regex: keyWord, $options: 'i' } }
         ]
     };

@@ -2,9 +2,11 @@ import { api } from './session';
 import type { DataEnvelope, DataListEnvelope } from './myFetch';
 import type { Post } from './post';
 import { useSession } from './session';
+import { ref } from 'vue';
 
 const session = useSession();
 
+export const useSearchTerm = ref('');
 export interface User {
     name: string;
     email: string;
@@ -29,4 +31,14 @@ export async function getHistory() {
 
 export async function deleteUser(id: string) {
     return api(`users/${id}`, undefined, 'DELETE');
+}
+
+export async function searchUsers(term: string) : Promise<DataListEnvelope<User>> {
+    console.log('in users')
+    if (term === '')
+    {
+        
+        return { data: [], isSuccess: true, total: 0};
+    }
+    return await api(`users/search/${term}`);
 }

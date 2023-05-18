@@ -1,11 +1,28 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
+import { ref, computed } from 'vue';
 import LogExerciseView from '../LogExerciseView.vue';
 import { useExercises, resetExercise } from '@/model/exercise';
 import { makePost } from '@/model/post';
+import { searchUsers, type User } from '../../model/user';
 
     const workout = useExercises();
     resetExercise('Run');
+
+    const searchTerm = ref('');
+
+    const Array = ref<User[]>([]);
+
+    
+
+    const userArray  = computed(() => {
+        console.log('hello')
+        searchUsers(searchTerm.value)
+        .then(data => {
+            Array.value = data.data;
+        })
+        console.log(Array.value)
+    })
 
     /*
     const unit = ref('');
@@ -58,6 +75,11 @@ import { makePost } from '@/model/post';
                 <textarea type="text" class="textarea" placeholder="comments on your workout" v-model="workout.exercise.comment"></textarea>
             </div>
 
+            <label for="label" class="label">
+                Tag a Friend that you exercised with
+            </label>
+            <input type="text" class="input field" id="search" placeholder="search for a friend" v-model="searchTerm">
+
             <div class="field">
                 <RouterLink to="/feed" class="button is-success submit" @click="makePost(workout.exercise)">
                     <span>Post Your Workout</span>
@@ -68,6 +90,10 @@ import { makePost } from '@/model/post';
                 <h1>
                     Unit: {{ workout.exercise.unit }}, Distance: {{ workout.exercise.distance }}, 
                     Time: {{ workout.exercise.time }}, Comment: {{ workout.exercise.comment }}
+                    SearchTerm: {{ searchTerm }}
+                    <ol>
+                        <li v-for="user in userArray" :key="user"> {{ user}}</li>
+                    </ol>
                 </h1>
             </div>
         </div>
